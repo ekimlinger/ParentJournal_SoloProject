@@ -1,0 +1,43 @@
+<md-content layout-align="center center" layout-margin layout padding>
+  <md-datepicker ng-model="date" md-placeholder="Enter date"></md-datepicker>
+</md-content>
+<md-content layout-padding>
+    <div style="width : 600px; margin: 10px auto;" >
+      <div layout-align="center">
+        <md-card ng-repeat="entry in entries.response">
+            <md-card-title>
+              <md-card-title-text>
+                <span class="md-headline"> <!--{{entry.child}} - --> {{entry.date | date:'longDate'}}  -  {{ showStars(entry.rating) }} </span>
+              </md-card-title-text>
+            </md-card-title>
+
+            <md-card-content>
+              <h2>
+
+              </h2>
+              <p>
+                <em>{{entry.journal}}</em>
+              </p>
+              <p>
+                Accomplishments: <span ng-repeat="thing in entry.accomplishments">{{thing}} </span>
+              </p>
+              <p>
+                Words and Phrases: <span ng-repeat="thing in entry.phrases">{{thing}} </span>
+              </p>
+              <p>
+                Favorites: <span ng-repeat="thing in entry.things">{{thing}} </span>
+              </p>
+              <p>
+                Notes: {{entry.notes}}
+              </p>
+            </md-card-content>
+
+            <md-card-actions layout="row" layout-align="end center">
+              <md-button ng-click="edit(entry)">Edit</md-button>
+              <md-button ng-click="deleteEntries(entry)">Delete</md-button>
+            </md-card-actions>
+
+        </md-card>
+      </div>
+    </div>
+</md-content>

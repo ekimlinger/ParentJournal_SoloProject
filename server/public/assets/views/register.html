@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <title>ParentJournal</title>
+    <!-- STYLES -->
+       <link rel="stylesheet" href="/assets/vendors/angular-material/angular-material.min.css">
+
+       <!-- SCRIPTS -->
+       <script type="text/javascript" src="/assets/vendors/angular/angular.min.js"></script>
+       <script type="text/javascript" src="/assets/vendors/angular-animate/angular-animate.min.js"></script>
+       <script type="text/javascript" src="/assets/vendors/angular-messages/angular-messages.min.js"></script>
+       <script type="text/javascript" src="/assets/vendors/angular-aria/angular-aria.min.js"></script>
+       <script type="text/javascript" src="/assets/vendors/angular-material/angular-material.min.js"></script>
+       <script type="text/javascript" src="/assets/vendors/angular-route/angular-route.min.js"></script>
+
+    <!-- MYSCRIPTS -->
+    <script type="text/javascript" src="/assets/scripts/app.js"></script>
+  </head>
+  <body>
+    <div>
+      <h2>Create Your New Account!</h2>
+      <form action="/register" method="post">
+
+        <md-input-container class="md-icon-float md-block">
+        <label for="firstname">First Name: </label>
+        <input type="text" name="firstname" id="firstname" required />
+        </md-input-container>
+
+        <md-input-container class="md-icon-float md-block">
+        <label for="lastname">Last Name: </label>
+        <input type="text" name="lastname" id="lastname" required/>
+        </md-input-container>
+
+        <md-input-container class="md-icon-float md-block">
+        <label for="username">Email: </label>
+        <input type="text" name="username" id="username" required/>
+        </md-input-container>
+
+        <md-input-container class="md-icon-float md-block">
+        <label for="password">Password: </label>
+        <input type="password" name="password" id="password" required/>
+        </md-input-container>
+
+        <md-input-container class="md-icon-float md-block">
+        <input type="submit" value="Register"/>
+        </md-input-container>
+
+        <a href="/">Back to Login</a>
+      </form>
+    </div>
+
+  </body>
+</html>

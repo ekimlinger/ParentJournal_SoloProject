@@ -1,0 +1,74 @@
+var express = require('express');
+var router = express.Router();
+var passport = require('passport');
+var path = require('path');
+var Entry = require('../models/entries.js');
+
+router.post("/entries", function(req,res,next){
+  var entry = new Entry({
+    user : req.body.userID,
+    rating : req.body.rating,
+    phrases : req.body.phrases,
+    things : req.body.things,
+    journal : req.body.journal,
+    notes : req.body.notes,
+    accomplishments : req.body.accomplishments,
+    date : req.body.date
+  });
+
+  entry.save(function(err, entry){
+    if(err){
+      console.log(err);
+    }
+    res.send(entry);
+    });
+});
+
+router.get("/entries/:userID/:date",function(req,res,next){
+
+  if(req.isAuthenticated()){
+    console.log("Hey I'm here and I got your request for entries!", req.params);
+    var userID = req.params.userID;
+    var reqDate = req.params.date;
+    Entry.find({user: userID, date: reqDate}, function(err,data){
+      if(err){
+        console.log(err);
+        res.send();
+      } else{
+        res.send(data);
+      }
+    });
+
+  } else{
+    res.redirect('/');
+  }
+
+});
+
+router.delete("/entries/:entryID",function(req,res,next){
+
+  if(req.isAuthenticated()){
+    console.log("Hey I'm here and I got your request for entries!", req.params);
+    var entryID = req.params.entryID;
+    Entry.findOneAndRemove({ _id: entryID}, function(err,data){
+      if(err){
+        console.log(err);
+        res.send();
+      } else{
+        res.send(data);
+      }
+    });
+
+  } else{
+    console.log("Trying to delete entries but you're not logged in!");
+    res.send();
+  }
+
+});
+
+router.get("/*", function(req,res){
+  var file = req.params[0] || "assets/views/login.html";
+  res.sendFile(path.join(__dirname,"../public/", file));
+});
+
+module.exports = router;
