@@ -40,7 +40,8 @@ router.get("/entries/:userID/:date",function(req,res,next){
     });
 
   } else{
-    res.redirect('/');
+    console.log("Trying to get entries but you're not logged in!");
+    res.send();
   }
 
 });

@@ -7,9 +7,13 @@
         <md-card ng-repeat="entry in entries.response">
             <md-card-title>
               <md-card-title-text>
-                <span class="md-headline"> <!--{{entry.child}} - --> {{entry.date | date:'longDate'}}  -  {{ showStars(entry.rating) }} </span>
+                <span class="md-headline"> <!--{{entry.child}} - --> {{entry.date | date:'longDate'}} </span>
+              </md-card-title-text>
+              <md-card-title-text layout-align="center end">
+                <span class="md-headline">{{ showStars(entry.rating) }}</span>
               </md-card-title-text>
             </md-card-title>
+
 
             <md-card-content>
               <h2>

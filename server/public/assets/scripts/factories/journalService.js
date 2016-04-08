@@ -6,7 +6,6 @@ myApp.factory("JournalService", ["$http",'$window','$filter', function($http, $w
       $http.get("/user/name").then(function(response){
         console.log("Logged in as: ", response.data);
         currentUser.data = response.data;
-        console.log("Logged in as: ", currentUser.data);
         if(!currentUser.data){
           $window.location.href = '/';
         }
@@ -38,7 +37,7 @@ myApp.factory("JournalService", ["$http",'$window','$filter', function($http, $w
       }else{
         $http.post("/entries", page).then(function(response){
             console.log("You have just created a new entry!");
-            //clear out "page" 
+            //clear out "page"
         });
       }
     };

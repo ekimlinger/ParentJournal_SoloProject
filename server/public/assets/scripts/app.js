@@ -101,6 +101,10 @@ myApp.config(["$routeProvider", function($routeProvider){
           templateUrl: "/assets/views/routes/view.html",
           controller: "ViewController"
       }).
+      when("/settings", {
+          templateUrl: "/assets/views/routes/settings.html",
+          controller: "SettingsController"
+      }).
       otherwise({
           redirectTo: '/home'
       });

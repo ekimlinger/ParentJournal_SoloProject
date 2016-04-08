@@ -1,0 +1,52 @@
+<md-content layout-padding>
+  <div style="width : 600px; margin: 10px auto;">
+    <div layout-align="center">
+      <md-card-title class="md-hue-2">
+        <md-card-title-text class="md-primary">
+          <h2 class="md-display-1">{{user.data.firstname}}
+            {{user.data.lastname}}</h2>
+        </md-card-title-text>
+      </md-card-title>
+
+      <md-card-content>
+
+        <div layout-gt-xs="row" layout="column">
+          <p>
+            <b>Email Address: {{user.data.username}}</b>
+          </p>
+            <span flex></span>
+            <md-button class="md-raised md-primary" ng-click="changeEmail()">Edit</md-button>
+        </div>
+        <div layout-gt-xs="row" layout="column">
+          <p>Password: Secure</p>
+          <span flex></span>
+          <md-button class="md-raised md-primary" ng-click="changePassword()">Edit</md-button>
+        </div>
+        <div layout-gt-xs="row" layout="column">
+          <p>
+            Reminders: {{user.data.currentReminders}}
+          </p>
+          <span flex></span>
+            <md-button class="md-raised md-primary" ng-click="changeReminders()">Edit</md-button>
+        </div>
+        <div layout-gt-xs="row" layout="column">
+          Children:
+          <span ng-repeat="child in user.data.childList">{{child}}
+          </span>
+        </div>
+        <div layout-gt-xs="row" layout="column">
+          <span flex></span>
+
+            <md-button class="md-raised md-warn" ng-click="deleteAccount()">Deactivate Account</md-button>
+
+        </div>
+      </md-card-content>
+
+      <div ng-if="status" id="status">
+        <b layout="row" layout-align="center center" class="md-padding">
+          {{status}}
+        </b>
+      </div>
+    </div>
+  </div>
+</md-content>

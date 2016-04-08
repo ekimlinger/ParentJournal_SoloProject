@@ -9,16 +9,18 @@
         <div layout-gt-xs="row">
           <h3 class="md-label">Today's Rating:
           </h3>
-          <md-input-container class="md-block" flex-gt-xs>
+          <md-input-container class="md-block" layout-align="center center" flex-gt-xs>
             <md-select ng-model="entry.rating" layout-align="center center" ng-required="required" required>
-              <md-option value="1" layout-align="center center">★</md-option>
-              <md-option value="2" layout-align="center center">★★</md-option>
-              <md-option value="3" layout-align="center center">★★★</md-option>
-              <md-option value="4" layout-align="center center">★★★★</md-option>
               <md-option value="5" layout-align="center center">★★★★★</md-option>
+              <md-option value="4" layout-align="center center">★★★★</md-option>
+              <md-option value="3" layout-align="center center">★★★</md-option>
+              <md-option value="2" layout-align="center center">★★</md-option>
+              <md-option value="1" layout-align="center center">★</md-option>
             </md-select>
           </md-input-container>
-          <md-datepicker ng-model="entry.date" md-placeholder="Enter date" ng-required="required" required></md-datepicker>
+          <div layout-align="center end">
+            <md-datepicker ng-model="entry.date" md-placeholder="Enter date" ng-required="required" required></md-datepicker>
+          </div>
 
         </div>
 
