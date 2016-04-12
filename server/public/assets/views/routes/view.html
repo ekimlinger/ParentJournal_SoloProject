@@ -1,13 +1,19 @@
-<md-content layout-align="center center" layout-margin layout padding>
-  <md-datepicker ng-model="date" md-placeholder="Enter date"></md-datepicker>
+<md-content class="md-hue-3" layout-padding>
+  <div class="md-whiteframe-12dp" layout-gt-xs="row" layout-align="center center">
+    <h2>Viewing all entries for: </h2>
+    <md-datepicker class="md-hue-3" ng-model="date" md-placeholder="Enter date"></md-datepicker>
+  </div>
 </md-content>
-<md-content layout-padding>
-    <div style="width : 600px; margin: 10px auto;" >
+<md-content >
+    <div style="width : 75%; margin: 20px auto;" >
       <div layout-align="center">
-        <md-card ng-repeat="entry in entries.response">
+        <md-card class="md-whiteframe-12dp"  style="margin: 25px auto;" ng-repeat="entry in entries.response">
             <md-card-title>
               <md-card-title-text>
-                <span class="md-headline"> <!--{{entry.child}} - --> {{entry.date | date:'longDate'}} </span>
+                <span class="md-headline">{{entry.child}}</span>
+              </md-card-title-text>
+              <md-card-title-text layout-align="center center">
+                <span class="md-headline">{{entry.date | date:'longDate'}}</span>
               </md-card-title-text>
               <md-card-title-text layout-align="center end">
                 <span class="md-headline">{{ showStars(entry.rating) }}</span>
@@ -23,22 +29,22 @@
                 <em>{{entry.journal}}</em>
               </p>
               <p>
-                Accomplishments: <span ng-repeat="thing in entry.accomplishments">{{thing}} </span>
+                <strong>Accomplishments: &nbsp&nbsp&nbsp&nbsp</strong><span ng-repeat="thing in entry.accomplishments">{{thing  || "None"}} </span>
               </p>
               <p>
-                Words and Phrases: <span ng-repeat="thing in entry.phrases">{{thing}} </span>
+                <strong>Words and Phrases: &nbsp&nbsp&nbsp&nbsp</strong><span ng-repeat="thing in entry.phrases">{{thing  || "None"}} </span>
               </p>
               <p>
-                Favorites: <span ng-repeat="thing in entry.things">{{thing}} </span>
+                <strong>Favorites: &nbsp&nbsp&nbsp&nbsp</strong><span ng-repeat="thing in entry.things">{{thing || "None"}} </span>
               </p>
               <p>
-                Notes: {{entry.notes}}
+                <strong>Notes: &nbsp&nbsp&nbsp&nbsp</strong>{{entry.notes || "None"}}
               </p>
             </md-card-content>
 
             <md-card-actions layout="row" layout-align="end center">
-              <md-button ng-click="edit(entry)">Edit</md-button>
-              <md-button ng-click="deleteEntries(entry)">Delete</md-button>
+              <md-button class="md-raised md-primary"  ng-click="edit(entry)">Edit</md-button>
+              <md-button class="md-raised md-warn"  ng-click="deleteEntries(entry)">Delete</md-button>
             </md-card-actions>
 
         </md-card>

@@ -12,6 +12,12 @@ myApp.factory("JournalService", ["$http",'$window','$filter', function($http, $w
       });
     };
 
+    var logout = function(){
+      $http.get("logout").then(function(){
+        console.log("You have just logged out")
+      });
+    };
+
     var getEntries = function(date){
       console.log("Attempting to get entries from: ", date);
       if(!currentUser.data){
@@ -56,13 +62,57 @@ myApp.factory("JournalService", ["$http",'$window','$filter', function($http, $w
       }
     };
 
-    getName();
+    var addChild = function(child){
+      $http.post("/user/addChild", child).then(function(response){
+        console.log(response);
+        getName();
+      });
+    };
+    var removeChild = function(index){
+      $http.delete("/user/deleteChild/" + index).then(function(response){
+        console.log("You have removed your child");
+        getName();
+      });
+    };
+    var changeEmail = function(newEmails){
+      $http.put("/user/email",newEmails).then(function(response){
+        console.log("Successfully changed Email adresses");
+        getName();
+      });
+    };
+    var changePassword = function(passwordPack){
+      console.log("changePassword doesn't do anything yet (in factory): ", passwordPack);
+    };
+    var savePreferences = function(noteArray){
+      for (var i; i< noteArray.length; i++){
+        if(noteArray[i] === undefined){
+          noteArray[i] = false;
+        }
+      }
+      $http.put("/user/notifications", noteArray).then(function(response){
+        console.log(response);
+        getName();
+      });
+      // On success: getName();
+    };
+    var deactivateAccount = function(){
+      console.log("deactivateAccount doesn't work yet (in factory).");
+      //logout();
+    };
 
+    getName();
+    // getChildren();
     return {
+        logout : logout,
         entries : entries,
         currentUser : currentUser,
         getEntries : getEntries,
         postEntries : postEntries,
-        deleteEntries : deleteEntries
+        deleteEntries : deleteEntries,
+        addChild : addChild,
+        removeChild : removeChild,
+        changeEmail : changeEmail,
+        changePassword : changePassword,
+        savePreferences : savePreferences
     };
 }]);

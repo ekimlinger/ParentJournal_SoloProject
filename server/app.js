@@ -14,6 +14,7 @@ var User = require("./models/user.js");
 
 //ROUTES
 var router = require("./modules/index.js");
+
 var register = require("./modules/register.js");
 var user = require("./modules/users.js");
 
@@ -86,7 +87,6 @@ app.post("/login", passport.authenticate("local", {
     successRedirect: "/assets/views/index.html",
     failureRedirect: "/assets/views/login.html"
 }));
-
 
 app.use('/register', register);
 app.use('/user', user);

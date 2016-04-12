@@ -7,6 +7,14 @@
       <form name="entryForm">
 
         <div layout-gt-xs="row">
+
+          <h3 class="md-label"><strong>Child:</strong></h3>
+          <md-input-container class="md-block" layout-align="center center" flex-gt-xs>
+            <md-select ng-model="entry.child"  layout-align="center center" ng-required="required" required>
+              <md-option ng-repeat="child in user.children" value="{{child.firstname}}"><strong>{{child.firstname}}</strong></md-option>
+            </md-select>
+          </md-input-container>
+
           <h3 class="md-label">Today's Rating:
           </h3>
           <md-input-container class="md-block" layout-align="center center" flex-gt-xs>
@@ -27,13 +35,13 @@
         <div layout-gt-xs="row">
           <h3 class="md-label">Awesome Words and Phrases
           </h3>
-          <md-chips ng-model="entry.phrases" name="phrases" delete-button-label="Remove Tag" delete-hint="Press delete to remove tag" secondary-placeholder="+Tag" md-max-chips="5"></md-chips>
+          <md-chips ng-model="entry.phrases" name="phrases" delete-button-label="Remove Tag" delete-hint="Press delete to remove tag" secondary-placeholder="+Tag" md-max-chips="10"></md-chips>
         </div>
 
         <div layout-gt-xs="row" layout="column">
           <h3 class="md-label">Favorite things
           </h3>
-          <md-chips ng-model="entry.things" delete-button-label="Remove Tag" delete-hint="Press delete to remove tag" secondary-placeholder="+Tag" md-max-chips="10"></md-chips>
+          <md-chips ng-model="entry.things" delete-button-label="Remove Tag" delete-hint="Press delete to remove tag" secondary-placeholder="+Tag" md-max-chips="20"></md-chips>
         </div>
 
         <div layout-gt-xs="row" layout="column">

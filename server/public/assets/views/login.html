@@ -21,29 +21,30 @@
       <div class="md-whiteframe-12dp md-padding md-hue-2" style="width : 60%; margin: auto;">
 
 
-        <md-toolbar class="" layout-align="center center">
-          <h1 class="md-display-2 md-hue-2">Welcome to Parent Journal</h1>
+        <md-toolbar layout-align="center center">
+          <h1 class="md-display-2">Welcome to Parent Journal</h1>
           <h3 class="md-headline">The easier way to keep track of your child’s life</h3>
         </md-toolbar>
 
         <form action="/login" method="post">
 
-          <div layout-gt-xs="row" md-padding>
+          <div layout-gt-xs="row" layout-padding>
             <h3 class="md-label">Email: </h3>
             <md-input-container class="md-block" flex-gt-xs>
               <input type="text" name="username" id="username" />
             </md-input-container>
           </div>
-          <div layout-gt-xs="row" md-padding>
+          <div layout-gt-xs="row" layout-padding>
             <h3 class="md-label">Password: </h3>
             <md-input-container class="md-block" flex-gt-xs>
               <input type="password" name="password" id="password" />
             </md-input-container>
           </div>
-
-          <input class="md-button md-hue-300" type="submit" value="Login"  />
+          <div layout-gt-xs="row" layout-align="center center" layout-padding>
+          <input class="md-button md-raised md-primary" type="submit" value="Login"  />
+          <a href="/register"><md-button class="md-raised md-warn"  ng-click="deleteEntries(entry)">Create an Account!</md-button></a>
+          </div>
         </form>
-        <a href="/register">Create an Account!</a>
       </div>
     </md-content>
   </body>

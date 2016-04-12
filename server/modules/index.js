@@ -4,9 +4,11 @@ var passport = require('passport');
 var path = require('path');
 var Entry = require('../models/entries.js');
 
+
 router.post("/entries", function(req,res,next){
   var entry = new Entry({
     user : req.body.userID,
+    child : req.body.child,
     rating : req.body.rating,
     phrases : req.body.phrases,
     things : req.body.things,
@@ -25,9 +27,6 @@ router.post("/entries", function(req,res,next){
 });
 
 router.get("/entries/:userID/:date",function(req,res,next){
-
-  if(req.isAuthenticated()){
-    console.log("Hey I'm here and I got your request for entries!", req.params);
     var userID = req.params.userID;
     var reqDate = req.params.date;
     Entry.find({user: userID, date: reqDate}, function(err,data){
@@ -38,12 +37,6 @@ router.get("/entries/:userID/:date",function(req,res,next){
         res.send(data);
       }
     });
-
-  } else{
-    console.log("Trying to get entries but you're not logged in!");
-    res.send();
-  }
-
 });
 
 router.delete("/entries/:entryID",function(req,res,next){
@@ -67,8 +60,19 @@ router.delete("/entries/:entryID",function(req,res,next){
 
 });
 
+
+router.get("/logout", function(req,res){
+  req.logout();
+  res.redirect('/');
+});
+
+
 router.get("/*", function(req,res){
-  var file = req.params[0] || "assets/views/login.html";
+  if(req.isAuthenticated()){
+    var file = req.params[0] || "assets/views/index.html";
+  } else{
+    var file = req.params[0] || "assets/views/login.html";
+  }
   res.sendFile(path.join(__dirname,"../public/", file));
 });
 

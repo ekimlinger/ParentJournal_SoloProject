@@ -23,10 +23,10 @@
     <script type="text/javascript" src="/assets/scripts/controllers/settingsController.js"></script>
     <script type="text/javascript" src="/assets/scripts/factories/journalService.js"></script>
   </head>
-  <body class="md-primary">
+  <body class="md-primary" ng-cloak>
     <ng-include src="'/assets/views/partials/header.html'"></ng-include>
     <ng-include src="'/assets/views/partials/nav.html'"></ng-include>
-      <main ng-view></main>
+      <main ng-view ng-cloak></main>
     <ng-include src="'/assets/views/partials/footer.html'"></ng-include>
   </body>
 </html>
