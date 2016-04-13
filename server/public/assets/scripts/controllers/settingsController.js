@@ -1,12 +1,12 @@
 myApp.controller("SettingsController", ["$scope", "$filter", "$mdDialog", "$mdMedia", "JournalService", function($scope, $filter, $mdDialog, $mdMedia, JournalService) {
       $scope.user = JournalService.currentUser;
+
       $scope.reminder = {};
       if($scope.user.data.children == undefined){
         $scope.user.data.children = [];
       }
       var setReminder = function(){
         var statement;
-        console.log($scope.user.data.notifications);
         var daily = $scope.user.data.notifications[0];
         var weekly = $scope.user.data.notifications[1];
         if(daily && weekly){
@@ -16,7 +16,6 @@ myApp.controller("SettingsController", ["$scope", "$filter", "$mdDialog", "$mdMe
         }else if (daily){
           statement = "Daily"
         }
-        console.log("Statement: ", statement);
         $scope.reminder.statement = statement;
       }
       $scope.$watch("user.data.notifications", function(user){

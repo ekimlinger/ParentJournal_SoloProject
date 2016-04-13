@@ -1,20 +1,24 @@
 var express = require("express");
 var app = express();
-var cookieParser = require("cookie-parser");
 var bodyParser = require("body-parser");
 
+//PASSPORT
+var cookieParser = require("cookie-parser");
 var passport = require("passport");
 var session = require("express-session");
 var localStrategy = require("passport-local");
 
+//MONGO
 var mongoose = require("mongoose");
+var mongoURI = "mongodb://localhost/parent_journal";
+var MongoDB = mongoose.connect(mongoURI).connection;
 
 //MODELS
 var User = require("./models/user.js");
 
+
 //ROUTES
 var router = require("./modules/index.js");
-
 var register = require("./modules/register.js");
 var user = require("./modules/users.js");
 
@@ -34,10 +38,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-//MONGO
-var mongoURI = "mongodb://localhost/parent_journal";
-var MongoDB = mongoose.connect(mongoURI).connection;
-
 MongoDB.on("error", function(err){
     console.log("Mongo Connection Error: ", err);
 });
@@ -46,6 +46,19 @@ MongoDB.once("open", function(err){
     console.log("Mongo Connection Open");
 });
 
+
+//  *********** CURRENTLY UNDER MAINTENANCE ************
+//  SENDS EMAIL DAILY TO ALL USERS BASED ON PREFERENCES
+//  AND IF THEY HAVE POSTED TODAY OR THIS WEEK
+
+// var sendAllEmails = require("./modules/sendAllEmails.js");
+
+// setInterval(function(){ // Set interval for checking
+//     var date = new Date(); // Create a Date object to find out what time it is
+//     if(date.getHours() === 18 && date.getMinutes() === 0){ // Check the time
+//       sendAllEmails();
+//     }
+// }, 60000);
 
 
 //PASSPORT SESSION
@@ -97,5 +110,7 @@ app.set("port",(process.env.PORT || 3000));
 app.listen(app.get("port"),function(){
   console.log("Listening on port: ", app.get("port"));
 });
+
+
 
 module.exports = app;

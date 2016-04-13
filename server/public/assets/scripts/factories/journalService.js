@@ -20,15 +20,15 @@ myApp.factory("JournalService", ["$http",'$window','$filter', function($http, $w
 
     var getEntries = function(date){
       console.log("Attempting to get entries from: ", date);
-      if(!currentUser.data){
-        $window.location.href = '/';
-      }else{
+      // if(!currentUser.data){
+      //   $window.location.href = '/';
+      // }else{
         var sendingDate = $filter('date')(date, 'yyyy-MM-dd');
         $http.get("/entries/" + currentUser.data.id + "/" + sendingDate).then(function(response){
           console.log("Here are the entries for this day: ", response.data);
             entries.response = response.data;
         });
-      }
+      // }
     };
 
     var postEntries = function(page){
@@ -38,28 +38,28 @@ myApp.factory("JournalService", ["$http",'$window','$filter', function($http, $w
       // Only posts entry if user is logged in
       console.log("Attempting to post: ", page);
       console.log("Current user: ", currentUser.data);
-      if(!currentUser.data){
-        $window.location.href = '/';
-      }else{
+      // if(!currentUser.data){
+      //   $window.location.href = '/';
+      // }else{
         $http.post("/entries", page).then(function(response){
             console.log("You have just created a new entry!");
             //clear out "page"
         });
-      }
+      // }
     };
 
     var deleteEntries = function(entry){
-      console.log("Current user: ", currentUser.data);
-      if(!currentUser.data){
-        $window.location.href = '/';
-      }else{
+      // console.log("Current user: ", currentUser.data);
+      // if(!currentUser.data){
+      //   $window.location.href = '/';
+      // }else{
         console.log("Attempting to remove entry: ", entry);
 
         $http.delete("/entries/" + entry._id).then(function(response){
             console.log("Deleted : ", response.data);
             getEntries(entry.date);
         });
-      }
+      // }
     };
 
     var addChild = function(child){

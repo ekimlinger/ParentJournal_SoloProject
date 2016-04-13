@@ -39,6 +39,22 @@ router.get("/entries/:userID/:date",function(req,res,next){
     });
 });
 
+router.put("/entries/:userID/:date",function(req,res,next){
+    var userID = req.params.userID;
+    var reqDate = req.params.date;
+    var updatedEntry = req.body;
+    console.log(updatedEntry);
+
+    // Entry.find({user: userID, date: reqDate}, function(err,data){
+    //   if(err){
+    //     console.log(err);
+    //     res.send();
+    //   } else{
+         res.send("Hey this got sent and returned!");
+    //   }
+    // });
+});
+
 router.delete("/entries/:entryID",function(req,res,next){
 
   if(req.isAuthenticated()){
