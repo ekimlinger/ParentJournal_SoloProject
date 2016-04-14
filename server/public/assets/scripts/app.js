@@ -1,5 +1,6 @@
 var myApp = angular.module("myApp", ['ngMaterial', 'ngRoute']);
 
+
 myApp.config(['$mdThemingProvider', function($mdThemingProvider){
   // var customPrimary = {
   //         '50': '#c0f181',

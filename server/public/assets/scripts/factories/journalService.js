@@ -24,7 +24,7 @@ myApp.factory("JournalService", ["$http",'$window','$filter', function($http, $w
       //   $window.location.href = '/';
       // }else{
         var sendingDate = $filter('date')(date, 'yyyy-MM-dd');
-        $http.get("/entries/" + currentUser.data.id + "/" + sendingDate).then(function(response){
+        $http.get("/entries/" + sendingDate).then(function(response){
           console.log("Here are the entries for this day: ", response.data);
             entries.response = response.data;
         });
@@ -35,31 +35,30 @@ myApp.factory("JournalService", ["$http",'$window','$filter', function($http, $w
       // Attaches user to entry
       page.userID = currentUser.data.id;
       page.date = $filter('date')(page.date, 'yyyy-MM-dd');
-      // Only posts entry if user is logged in
-      console.log("Attempting to post: ", page);
-      console.log("Current user: ", currentUser.data);
-      // if(!currentUser.data){
-      //   $window.location.href = '/';
-      // }else{
-        $http.post("/entries", page).then(function(response){
-            console.log("You have just created a new entry!");
-            //clear out "page"
-        });
-      // }
+      $http.post("/entries", page).then(function(response){
+          console.log("You have just created a new entry!");
+      });
+    };
+
+    var editEntries = function(page){
+      // Attaches user to entry
+      page.userID = currentUser.data.id;
+      console.log("page.date = ", page.date);
+      page.date = $filter('date')(page.date, 'yyyy-MM-dd');
+      $http.put("/entries/" + page._id, page).then(function(response){
+        console.log("You have just created a new entry!");
+        getEntries(page.date);
+      });
     };
 
     var deleteEntries = function(entry){
-      // console.log("Current user: ", currentUser.data);
-      // if(!currentUser.data){
-      //   $window.location.href = '/';
-      // }else{
+
         console.log("Attempting to remove entry: ", entry);
 
         $http.delete("/entries/" + entry._id).then(function(response){
             console.log("Deleted : ", response.data);
             getEntries(entry.date);
         });
-      // }
     };
 
     var addChild = function(child){
@@ -75,7 +74,7 @@ myApp.factory("JournalService", ["$http",'$window','$filter', function($http, $w
       });
     };
     var changeEmail = function(newEmails){
-      $http.put("/user/email",newEmails).then(function(response){
+      $http.put("/user/email", newEmails).then(function(response){
         console.log("Successfully changed Email adresses");
         getName();
       });
@@ -93,7 +92,6 @@ myApp.factory("JournalService", ["$http",'$window','$filter', function($http, $w
         console.log(response);
         getName();
       });
-      // On success: getName();
     };
     var deactivateAccount = function(){
       console.log("deactivateAccount doesn't work yet (in factory).");
@@ -101,13 +99,14 @@ myApp.factory("JournalService", ["$http",'$window','$filter', function($http, $w
     };
 
     getName();
-    // getChildren();
+
     return {
         logout : logout,
         entries : entries,
         currentUser : currentUser,
         getEntries : getEntries,
         postEntries : postEntries,
+        editEntries : editEntries,
         deleteEntries : deleteEntries,
         addChild : addChild,
         removeChild : removeChild,

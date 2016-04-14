@@ -1,7 +1,33 @@
 <md-content layout-padding>
-  <div class="md-whiteframe-12dp" style="width : 90%; margin: 0 auto;">
-    <md-toolbar class="md-primary" layout-align="center center">
-      <h2 class="md-display-2">Hello {{currentUser.data.firstname}} !!</h2>
-    </md-toolbar>
+  <div class="md-whiteframe-12dp" style="width : 90%; margin: 10px auto 50px auto;">
+    <div style="text-align: center;">
+
+      <div ng-if="randomPhrase" class="md-whiteframe-12dp " layout-xs="row" layout-align="center center">
+        <h2>"{{randomPhrase.text}}" -
+          {{randomPhrase.child}}
+          {{randomPhrase.date | date:'longDate'}}</h2>
+      </div>
+      <!-- OR -->
+      <div ng-if="!randomPhrase"  align="center center">
+        <div layout-align="center center">
+          <h2>You don't have any journal entries yet!</h2>
+        </div>
+
+        <span flex></span>
+        <md-button class="md-raised md-primary" href="#add">Click Here to add some!</md-button>
+
+      </div>
+    </div>
+
+    <div layout-gt-sm="row">
+
+      <div ng-if="randomJournal" class="md-whiteframe-12dp " layout="column" layout-align="center center">
+        <p>"{{randomJournal.text}}"</p>
+        <p>
+          <strong>{{randomJournal.child}}</strong> -- {{randomJournal.date}}
+        </p>
+      </div>
+
+    </div>
   </div>
 </md-content>

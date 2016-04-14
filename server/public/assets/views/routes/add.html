@@ -1,9 +1,9 @@
-<md-content class="md-hue-3" layout-padding>
-  <div class="md-whiteframe-12dp" style="width : 90%; margin: 0 auto;">
+<md-content class="md-hue-4" layout-padding>
+  <div class="md-whiteframe-12dp" style="width : 90%; margin: 10px auto 50px auto;">
     <md-toolbar class="md-hue-2" layout-align="center center">
       <h2 class="md-display-2">Create New Entry</h2>
     </md-toolbar>
-    <md-content class="md-padding" layout-padding layout="column">
+    <!-- <md-content class="md-padding" layout-padding layout="column"> -->
       <form name="entryForm">
 
         <div layout-gt-xs="row">
@@ -26,8 +26,10 @@
               <md-option value="1" layout-align="center center">★</md-option>
             </md-select>
           </md-input-container>
-          <div layout-align="center end">
-            <md-datepicker ng-model="entry.date" md-placeholder="Enter date" ng-required="required" required></md-datepicker>
+          <div>
+            <div layout-align="center end">
+              <md-datepicker class="md-hue-4" style="background: inherit;" ng-model="entry.date" md-placeholder="Enter date" ng-required="required" required></md-datepicker>
+            </div>
           </div>
 
         </div>
@@ -68,6 +70,6 @@
 
         </div>
       </form>
-    </md-content>
+    <!-- </md-content> -->
   </div>
 </md-content>
