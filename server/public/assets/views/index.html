@@ -23,6 +23,7 @@
     <script type="text/javascript" src="/assets/scripts/controllers/homeController.js"></script>
     <script type="text/javascript" src="/assets/scripts/controllers/addController.js"></script>
     <script type="text/javascript" src="/assets/scripts/controllers/viewController.js"></script>
+    <script type="text/javascript" src="/assets/scripts/controllers/indexController.js"></script>
     <script type="text/javascript" src="/assets/scripts/controllers/settingsController.js"></script>
 
 
@@ -30,8 +31,9 @@
 
 
   <body class="md-primary" style="background: rgb(66,66,66);" ng-cloak>
-    <ng-include src="'/assets/views/partials/header.html'"></ng-include>
-    <ng-include src="'/assets/views/partials/nav.html'"></ng-include>
+    <ng-include ng-controller="LeftCtrl" src="'/assets/views/partials/header.html'"></ng-include>
+    <ng-include ng-controller="LeftCtrl" src="'/assets/views/partials/nav.html'"></ng-include>
+
       <main ng-view ng-cloak ></main>
     <ng-include src="'/assets/views/partials/footer.html'"></ng-include>
   </body>
