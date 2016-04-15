@@ -1,20 +1,17 @@
-myApp.controller("LeftCtrl", ["$scope", "$timeout", "$mdSidenav", "$log", function($scope, $timeout, $mdSidenav, $log){
+myApp.controller("LeftCtrl", ["$scope", "$timeout", "$mdSidenav", "$log", function($scope, $timeout, $mdSidenav, $log) {
 
   $scope.toggleLeft = buildDelayedToggler('left');
   $scope.toggleRight = buildToggler('right');
 
-  $scope.isOpenRight = function(){
+  $scope.isOpenRight = function() {
     var right = $mdSidenav('right');
     return right && right.isOpen();
   };
 
-  $scope.close = function () {
-  // Component lookup should always be available since we are not using `ng-if`
-  $mdSidenav('left').close()
-    .then(function () {
-      $log.debug("close LEFT is done");
-    });
-};
+  $scope.close = function() {
+    // Component lookup should always be available since we are not using `ng-if`
+    $mdSidenav('left').close();
+  };
   /**
    * Supplies a function that will continue to operate until the
    * time is up.
@@ -23,7 +20,7 @@ myApp.controller("LeftCtrl", ["$scope", "$timeout", "$mdSidenav", "$log", functi
     var timer;
     return function debounced() {
       var context = $scope,
-          args = Array.prototype.slice.call(arguments);
+        args = Array.prototype.slice.call(arguments);
       $timeout.cancel(timer);
       timer = $timeout(function() {
         timer = undefined;
@@ -39,18 +36,16 @@ myApp.controller("LeftCtrl", ["$scope", "$timeout", "$mdSidenav", "$log", functi
     return debounce(function() {
       // Component lookup should always be available since we are not using `ng-if`
       $mdSidenav(navID)
-        .toggle()
-        .then(function () {
-          $log.debug("toggle " + navID + " is done");
-        });
+        .toggle();
     }, 200);
   }
+
   function buildToggler(navID) {
     return function() {
       // Component lookup should always be available since we are not using `ng-if`
       $mdSidenav(navID)
         .toggle()
-        .then(function () {
+        .then(function() {
           $log.debug("toggle " + navID + " is done");
         });
     }

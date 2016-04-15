@@ -18,8 +18,11 @@
     <script type="text/javascript" src="/assets/scripts/app.js"></script>
   </head>
   <body>
-    <div>
-      <h2>Create Your New Account!</h2>
+    <md-content layout-padding>
+      <div class="md-whiteframe-12dp md-padding md-hue-2" style="width : 60%; margin: auto;">
+        <md-toolbar layout-align="center center">
+      <h2 class="md-display-2">Create Your New Account!</h2>
+    </md-toolbar>
       <form action="/register" method="post">
 
         <md-input-container class="md-icon-float md-block">
@@ -42,13 +45,13 @@
         <input type="password" name="password" id="password" required/>
         </md-input-container>
 
-        <md-input-container class="md-icon-float md-block">
-        <input type="submit" value="Register"/>
-        </md-input-container>
+        <div layout-gt-xs="row" layout-align="center center">
+        <md-button class="md-raised md-primary" type="submit">Register</md-button>
 
-        <a href="/">Back to Login</a>
+        <md-button class="md-raised md-warn" href="/">Login</md-button>
+      </div>
       </form>
     </div>
-
+  </md-content>
   </body>
 </html>

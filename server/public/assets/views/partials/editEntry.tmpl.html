@@ -17,7 +17,12 @@
         <form>
           <div layout-gt-xs="row">
 
-            <h3 class="md-label"><strong>Child:  &nbsp;{{entry.child}} &nbsp;&nbsp;&nbsp;&nbsp;</strong></h3>
+            <h3 class="md-label"><strong>Child:</strong></h3>
+            <md-input-container class="md-block" layout-align="center center" flex-gt-xs>
+              <md-select ng-model="entry.child"  layout-align="center center" ng-required="required" required>
+                <md-option ng-repeat="child in user.children" value="{{child.firstname}}"><strong>{{child.firstname}}</strong></md-option>
+              </md-select>
+            </md-input-container>
 
 
             <h3 class="md-label">Today's Rating:

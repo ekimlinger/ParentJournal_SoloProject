@@ -7,7 +7,7 @@
 
     <!-- STYLES -->
        <link rel="stylesheet" href="/assets/vendors/angular-material/angular-material.min.css">
-
+       <link rel="stylesheet" type="text/css" href="/assets/styles/indexStyles.css" />
        <!-- SCRIPTS -->
 
        <script type="text/javascript" src="/assets/vendors/angular/angular.min.js"></script>
@@ -31,7 +31,7 @@
 
 
   <body class="md-primary" style="background: rgb(66,66,66);" ng-cloak>
-    <ng-include ng-controller="LeftCtrl" src="'/assets/views/partials/header.html'"></ng-include>
+    <ng-include class="myHeader" ng-controller="LeftCtrl" src="'/assets/views/partials/header.html'"></ng-include>
     <ng-include ng-controller="LeftCtrl" src="'/assets/views/partials/nav.html'"></ng-include>
 
       <main ng-view ng-cloak ></main>

@@ -20,15 +20,12 @@ myApp.factory("JournalService", ["$http",'$window','$filter', function($http, $w
 
     var getEntries = function(date){
       console.log("Attempting to get entries from: ", date);
-      // if(!currentUser.data){
-      //   $window.location.href = '/';
-      // }else{
+
         var sendingDate = $filter('date')(date, 'yyyy-MM-dd');
         $http.get("/entries/" + sendingDate).then(function(response){
-          console.log("Here are the entries for this day: ", response.data);
             entries.response = response.data;
         });
-      // }
+
     };
 
     var postEntries = function(page){

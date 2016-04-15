@@ -1,11 +1,15 @@
-myApp.controller("ViewController", ["$scope","$filter", "$mdDialog", "$mdMedia", "JournalService", function($scope, $filter, $mdDialog, $mdMedia, JournalService){
+myApp.controller("ViewController", ["$scope","$filter", "$mdToast", "$mdDialog", "$mdMedia", "JournalService", function($scope, $filter, $mdToast, $mdDialog, $mdMedia, JournalService){
   var currentEntry = {};
+
   //Sets default date to today
   $scope.date = new Date(Date.now());
+  var emptyForToday = {date: $scope.date, journal: "No Entries for today!<br> Click here to add some! </br> <md-button class='md-raised md-primary' href='#add'>Add</md-button>"}
   // Runs getEntries upon changing date
   $scope.$watch("date", function(date){
     JournalService.getEntries(date);
-    $scope.entries = JournalService.entries;
+
+      $scope.entries = JournalService.entries;
+
     refEntries = JournalService.entries;
   });
 
@@ -35,6 +39,15 @@ myApp.controller("ViewController", ["$scope","$filter", "$mdDialog", "$mdMedia",
     return starString;
   };
 
+  $scope.showToast = function(date) {
+    $mdToast.show(
+      $mdToast.simple()
+      .textContent('Updated Entry')
+      .position('fixed')
+      .hideDelay(3000)
+    );
+  };
+
   //Function to diolouge
   //requires use of partials/editEntry.tmpl.html && DialogController
   $scope.editEntries = function(entry) {
@@ -46,9 +59,8 @@ myApp.controller("ViewController", ["$scope","$filter", "$mdDialog", "$mdMedia",
     currentEntry.journal = entry.journal;
     currentEntry.things = entry.things;
     currentEntry.child = entry.child;
-    currentEntry.date = new Date($filter('date')(entry.date, 'EEE MMM dd yyyy H:mm:ss '));
+    currentEntry.date = new Date($scope.date);
 
-    console.log(currentEntry);
 
     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
     $mdDialog.show({
@@ -60,7 +72,8 @@ myApp.controller("ViewController", ["$scope","$filter", "$mdDialog", "$mdMedia",
         fullscreen: useFullScreen
       })
       .then(function(answer) {
-        $scope.status = 'Updated Journal Entry';
+        console.log("Updated: ", answer)
+        $scope.showToast(answer.date);
         JournalService.getEntries($scope.date);
       }, function() {
         $scope.status = "";
@@ -76,7 +89,7 @@ myApp.controller("ViewController", ["$scope","$filter", "$mdDialog", "$mdMedia",
 
   function DialogController($scope, $mdDialog) {
     $scope.entry = currentEntry;
-
+    $scope.user = JournalService.currentUser.data;
     $scope.hide = function() {
       $mdDialog.hide();
     };
