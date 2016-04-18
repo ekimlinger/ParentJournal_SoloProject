@@ -34,7 +34,7 @@
                 <md-option value="3" layout-align="center center">★★★</md-option>
                 <md-option value="2" layout-align="center center">★★</md-option>
                 <md-option value="1" layout-align="center center">★</md-option>
-              </md-select>
+              </md-select required>
             </md-input-container>
             <div layout-align="center end">
               <md-datepicker ng-model="entry.date" md-placeholder="Enter date" ng-required="required" required></md-datepicker>
@@ -79,7 +79,7 @@
 
     <!-- ACTIONS -->
     <md-dialog-actions layout="row">
-      <md-button class="md-raised md-primary" ng-click="saveEntry(entry)" md-autofocus>
+      <md-button class="md-raised md-primary" type="submit" ng-click="saveEntry(entry)" md-autofocus>
         Save
       </md-button>
       <span flex></span>

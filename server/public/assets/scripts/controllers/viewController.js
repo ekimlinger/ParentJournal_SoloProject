@@ -3,7 +3,7 @@ myApp.controller("ViewController", ["$scope","$filter", "$mdToast", "$mdDialog",
 
   //Sets default date to today
   $scope.date = new Date(Date.now());
-  var emptyForToday = {date: $scope.date, journal: "No Entries for today!<br> Click here to add some! </br> <md-button class='md-raised md-primary' href='#add'>Add</md-button>"}
+
   // Runs getEntries upon changing date
   $scope.$watch("date", function(date){
     JournalService.getEntries(date);

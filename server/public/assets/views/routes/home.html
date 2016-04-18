@@ -1,30 +1,25 @@
 <md-content layout-padding>
-  <div class="md-whiteframe-12dp" style="width : 90%; margin: 10px auto 50px auto;">
-    <div style="text-align: center;">
+  <div style="max-width : 600px; margin: 10px auto 50px auto;">
 
-      <div ng-if="randomPhrase" class="md-whiteframe-12dp " layout-xs="row" layout-align="center center">
-        <h2>"{{randomPhrase.text}}" -
-          {{randomPhrase.child}}
-          {{randomPhrase.date | date:'longDate'}}</h2>
+      <div ng-if="randomPhrase.data" class="md-whiteframe-12dp fade" layout-xs="row" style="text-align: center;" layout-padding layout-align="center center">
+        <h2>"{{randomPhrase.data.phrases[0] }}" - {{randomPhrase.data.child}}&nbsp;&nbsp;{{randomPhrase.data.date | date}}</h2>
       </div>
       <!-- OR -->
-      <div ng-if="!randomPhrase"  align="center center">
+      <div ng-if="!randomPhrase.data && !randomJournal.data" layout-padding  align="center center" ng-animate=" 'animate' ">
         <div layout-align="center center">
           <h2>You don't have any journal entries yet!</h2>
         </div>
 
         <span flex></span>
         <md-button class="md-raised md-primary" href="#add">Click Here to add some!</md-button>
-
       </div>
-    </div>
 
     <div layout-gt-sm="row">
 
-      <div ng-if="randomJournal" class="md-whiteframe-12dp " layout="column" layout-align="center center">
-        <p>"{{randomJournal.text}}"</p>
+      <div ng-if="randomJournal.data" class="md-whiteframe-12dp fade" layout="column" layout-padding layout-align="center center">
+        <p>"{{randomJournal.data.journal}}"</p>
         <p>
-          <strong>{{randomJournal.child}}</strong> -- {{randomJournal.date}}
+          <strong>{{randomJournal.data.child}}</strong> -- {{randomJournal.data.date | date}}
         </p>
       </div>
 

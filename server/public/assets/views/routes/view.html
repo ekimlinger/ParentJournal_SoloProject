@@ -1,59 +1,76 @@
 <md-content layout-padding>
 
   <div>
-    <div class="md-whiteframe-12dp "  layout-gt-xs="row" layout-align="center center">
+    <div class="md-whiteframe-12dp " layout-gt-xs="row" layout-align="center center">
 
-      <h2>Viewing all entries for: </h2>
+      <h2>Viewing all entries for:
+      </h2>
       <md-datepicker class="md-hue-4" ng-model="date" md-placeholder="Enter date"></md-datepicker>
 
     </div>
 
   </div>
 
+  <div style="width : 75%; margin: 0px auto 20px auto;">
+    <div layout-align="center">
+      <md-card ng-if="entries.response" class="md-whiteframe-12dp" style="margin: 25px auto;" ng-repeat="entry in entries.response">
+        <md-toolbar>
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-headline">{{entry.child}}</span>
+            </md-card-title-text>
+            <md-card-title-text layout-align="center center">
+              <span class="md-headline">{{entry.date | date:'longDate'}}</span>
+            </md-card-title-text>
+            <md-card-title-text layout-align="center end">
+              <span class="md-headline">{{ showStars(entry.rating) }}</span>
+            </md-card-title-text>
+          </md-card-title>
+        </md-toolbar>
 
-    <div style="width : 75%; margin: 0px auto 20px auto;" >
-      <div layout-align="center">
-        <md-card class="md-whiteframe-12dp"  style="margin: 25px auto;" ng-repeat="entry in entries.response">
-            <md-card-title>
-              <md-card-title-text>
-                <span class="md-headline">{{entry.child}}</span>
-              </md-card-title-text>
-              <md-card-title-text layout-align="center center">
-                <span class="md-headline">{{entry.date | date:'longDate'}}</span>
-              </md-card-title-text>
-              <md-card-title-text layout-align="center end">
-                <span class="md-headline">{{ showStars(entry.rating) }}</span>
-              </md-card-title-text>
-            </md-card-title>
+        <md-card-content>
+          <h2></h2>
+          <p>
+            <em>{{entry.journal}}</em>
+          </p>
+          <p>
+            <strong>Accomplishments: &nbsp&nbsp&nbsp&nbsp</strong>
+            <span ng-repeat="thing in entry.accomplishments">{{thing  || "None"}}
+            </span>
+          </p>
+          <p>
+            <strong>Words and Phrases: &nbsp&nbsp&nbsp&nbsp</strong>
+            <span ng-repeat="thing in entry.phrases">{{thing  || "None"}}
+            </span>
+          </p>
+          <p>
+            <strong>Favorites: &nbsp&nbsp&nbsp&nbsp</strong>
+            <span ng-repeat="thing in entry.things">{{thing || "None"}}
+            </span>
+          </p>
+          <p>
+            <strong>Notes: &nbsp&nbsp&nbsp&nbsp</strong>{{entry.notes || "None"}}
+          </p>
+        </md-card-content>
 
-
-            <md-card-content>
-              <h2>
-
-              </h2>
-              <p>
-                <em>{{entry.journal}}</em>
-              </p>
-              <p>
-                <strong>Accomplishments: &nbsp&nbsp&nbsp&nbsp</strong><span ng-repeat="thing in entry.accomplishments">{{thing  || "None"}} </span>
-              </p>
-              <p>
-                <strong>Words and Phrases: &nbsp&nbsp&nbsp&nbsp</strong><span ng-repeat="thing in entry.phrases">{{thing  || "None"}} </span>
-              </p>
-              <p>
-                <strong>Favorites: &nbsp&nbsp&nbsp&nbsp</strong><span ng-repeat="thing in entry.things">{{thing || "None"}} </span>
-              </p>
-              <p>
-                <strong>Notes: &nbsp&nbsp&nbsp&nbsp</strong>{{entry.notes || "None"}}
-              </p>
-            </md-card-content>
-
-            <md-card-actions layout="row" layout-align="end center">
-              <md-button class="md-raised md-primary"  ng-click="editEntries(entry)">Edit</md-button>
-              <md-button class="md-raised md-warn"  ng-click="deleteEntries(entry)">Delete</md-button>
-            </md-card-actions>
-
-        </md-card>
-      </div>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button class="md-raised md-primary" ng-click="editEntries(entry)">Edit</md-button>
+          <md-button class="md-raised md-warn" ng-click="deleteEntries(entry)">Delete</md-button>
+        </md-card-actions>
+      </md-card>
+      <md-card ng-if="!entries.response[0]">
+        <md-toolbar>
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-headline">{{date | date:'longDate'}}</span>
+            </md-card-title-text>
+          </md-card-title>
+        </md-toolbar>
+        <md-card-content>
+          <h2>You don't have any journal entries for today!</h2>
+          <md-button class="md-raised" ng-click="editEntries({date:date, phrases:[], things:[], accomplishments: []})">Click Here to add one!</md-button>
+        </md-content
+      </md-card>
     </div>
+  </div>
 </md-content>

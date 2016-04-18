@@ -4,54 +4,59 @@
     <meta charset="utf-8">
     <title>ParentJournal</title>
     <!-- STYLES -->
-       <link rel="stylesheet" href="/assets/vendors/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="/assets/vendors/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="/assets/styles/loginStyles.css"/>
 
-       <!-- SCRIPTS -->
-       <script type="text/javascript" src="/assets/vendors/angular/angular.min.js"></script>
-       <script type="text/javascript" src="/assets/vendors/angular-animate/angular-animate.min.js"></script>
-       <script type="text/javascript" src="/assets/vendors/angular-messages/angular-messages.min.js"></script>
-       <script type="text/javascript" src="/assets/vendors/angular-aria/angular-aria.min.js"></script>
-       <script type="text/javascript" src="/assets/vendors/angular-material/angular-material.min.js"></script>
-       <script type="text/javascript" src="/assets/vendors/angular-route/angular-route.min.js"></script>
+    <!-- SCRIPTS -->
+    <script type="text/javascript" src="/assets/vendors/angular/angular.min.js"></script>
+    <script type="text/javascript" src="/assets/vendors/angular-animate/angular-animate.min.js"></script>
+    <script type="text/javascript" src="/assets/vendors/angular-messages/angular-messages.min.js"></script>
+    <script type="text/javascript" src="/assets/vendors/angular-aria/angular-aria.min.js"></script>
+    <script type="text/javascript" src="/assets/vendors/angular-material/angular-material.min.js"></script>
+    <script type="text/javascript" src="/assets/vendors/angular-route/angular-route.min.js"></script>
 
     <!-- MYSCRIPTS -->
     <script type="text/javascript" src="/assets/scripts/app.js"></script>
   </head>
   <body>
-    <md-content layout-padding>
-      <div class="md-whiteframe-12dp md-padding md-hue-2" style="width : 60%; margin: auto;">
-        <md-toolbar layout-align="center center">
-      <h2 class="md-display-2">Create Your New Account!</h2>
-    </md-toolbar>
+
+    <md-content class="md-whiteframe-12dp md-padding md-hue-4" style="width : 60%; margin: auto;">
+      <md-toolbar layout-align="center center">
+        <h1>Create Your New Account!</h1>
+      </md-toolbar>
       <form action="/register" method="post">
 
+          <p class="md-label">First Name:
+          </p>
+          <md-input-container class="md-icon-float md-block">
+            <input type="text" name="firstname" id="firstname" required/>
+          </md-input-container>
+
+
+
+        <p class="md-label">Last Name:</p>
         <md-input-container class="md-icon-float md-block">
-        <label for="firstname">First Name: </label>
-        <input type="text" name="firstname" id="firstname" required />
+          <input type="text" name="lastname" id="lastname" required/>
         </md-input-container>
 
+        <p class="md-label" for="username">Email:
+        </p>
         <md-input-container class="md-icon-float md-block">
-        <label for="lastname">Last Name: </label>
-        <input type="text" name="lastname" id="lastname" required/>
+          <input type="text" name="username" id="username" required/>
         </md-input-container>
 
+        <p class="md-label" for="password">Password:
+        </p>
         <md-input-container class="md-icon-float md-block">
-        <label for="username">Email: </label>
-        <input type="text" name="username" id="username" required/>
-        </md-input-container>
-
-        <md-input-container class="md-icon-float md-block">
-        <label for="password">Password: </label>
-        <input type="password" name="password" id="password" required/>
+          <input type="password" name="password" id="password" required/>
         </md-input-container>
 
         <div layout-gt-xs="row" layout-align="center center">
-        <md-button class="md-raised md-primary" type="submit">Register</md-button>
+          <md-button class="md-raised md-primary" type="submit">Register</md-button>
 
-        <md-button class="md-raised md-warn" href="/">Login</md-button>
-      </div>
+          <md-button class="md-raised md-warn" href="/">Login</md-button>
+        </div>
       </form>
-    </div>
-  </md-content>
+    </md-content>
   </body>
 </html>

@@ -5,6 +5,11 @@ var path = require('path');
 var Entry = require('../models/entries.js');
 
 
+function randomNumber(min,max){
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+
 router.post("/entries", function(req, res, next) {
   var entry = new Entry({
     user: req.body.userID,
@@ -26,10 +31,43 @@ router.post("/entries", function(req, res, next) {
   });
 });
 
+router.get("/entries/randomPhrase", function(req, res, next) {
 
+  if (req.isAuthenticated()) {
+    var userID = req.user._id;
+    Entry.find({user: userID, $where: 'this.phrases.length > 0'}, function(err, data) {
+      if (!err){
+        //sends back a random journal entry from findall
+        var entry = data[randomNumber(0,data.length)];
+        res.send(entry);
+      }
+    });
+  } else{
+    res.send();
+  }
+});
+
+router.get("/entries/randomJournal", function(req, res, next) {
+
+  if (req.isAuthenticated()) {
+    var userID = req.user._id;
+    Entry.find({user: userID, rating: {$gt:2}}, function(err, data) {
+      if (!err){
+        //sends back a random journal entry from findall
+        var entry = data[randomNumber(0,data.length)];
+
+        res.send(entry);
+      }
+
+    });
+  } else{
+    res.send();
+  }
+});
 ////
 //  GET ENTRIES BY REQ.USER._ID INSTEAD OF PARAMS!!!!!
 ///
+
 router.get("/entries/:date", function(req, res, next) {
 
   if (req.isAuthenticated()) {
@@ -50,6 +88,7 @@ router.get("/entries/:date", function(req, res, next) {
     res.send();
   }
 });
+
 
 router.put("/entries/:entryID", function(req, res, next) {
   var entryID = req.params.entryID;

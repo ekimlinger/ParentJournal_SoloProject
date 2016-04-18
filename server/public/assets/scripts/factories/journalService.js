@@ -1,6 +1,12 @@
 myApp.factory("JournalService", ["$http",'$window','$filter', function($http, $window, $filter){
     var entries = {};
     var currentUser = {};
+    var randomPhrase = {};
+    var randomJournal = {};
+
+    var randomNumber = function(min,max){
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    };
 
     var getName = function(){
       $http.get("/user/name").then(function(response){
@@ -27,7 +33,18 @@ myApp.factory("JournalService", ["$http",'$window','$filter', function($http, $w
         });
 
     };
+    var getRandomPhrase = function(){
+      $http.get("/entries/randomPhrase").then(function(response){
 
+        randomPhrase.data = response.data;
+      });
+    };
+    var getRandomJournal = function(){
+      $http.get("/entries/randomJournal").then(function(response){
+
+        randomJournal.data = response.data;
+      });
+    };
     var postEntries = function(page){
       // Attaches user to entry
       page.userID = currentUser.data.id;
@@ -42,10 +59,14 @@ myApp.factory("JournalService", ["$http",'$window','$filter', function($http, $w
       page.userID = currentUser.data.id;
       console.log("page.date = ", page.date);
       page.date = $filter('date')(page.date, 'yyyy-MM-dd');
-      $http.put("/entries/" + page._id, page).then(function(response){
-        console.log("You have just created a new entry!");
-        getEntries(page.date);
-      });
+      if(page._id){
+        $http.put("/entries/" + page._id, page).then(function(response){
+          console.log("You have just created a new entry!");
+          getEntries(page.date);
+        });
+      }else{
+        postEntries(page);
+      }
     };
 
     var deleteEntries = function(entry){
@@ -96,10 +117,17 @@ myApp.factory("JournalService", ["$http",'$window','$filter', function($http, $w
     };
 
     getName();
+    getRandomPhrase();
+    getRandomJournal();
+    setInterval(getRandomPhrase, 10000);
+    setInterval(getRandomJournal, 30000);
+
 
     return {
         logout : logout,
         entries : entries,
+        randomPhrase : randomPhrase,
+        randomJournal : randomJournal,
         currentUser : currentUser,
         getEntries : getEntries,
         postEntries : postEntries,
