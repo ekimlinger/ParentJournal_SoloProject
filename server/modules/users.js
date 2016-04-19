@@ -11,10 +11,10 @@ router.get("/", function(req,res,next){
 
 router.post("/addChild",function(req,res,next){
   var newChild = req.body;
-  console.log("Adding Child, logged in: ", req.isAuthenticated());
+  console.log("Adding Child", newChild ,", logged in: ", req.isAuthenticated());
   if(req.isAuthenticated()){
     console.log(req.user._id);
-    User.update({id: req._id},
+    User.update({_id: req.user._id},
       { $push: {children: newChild}
     }, function(err){
       if(err){

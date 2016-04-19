@@ -64,7 +64,7 @@ var sendAllEmails = require("./modules/sendAllEmails.js");
 //       sendAllEmails();
 //     }
 // }, 60000);
-sendAllEmails();
+// sendAllEmails();
 
 //PASSPORT SESSION
 passport.serializeUser(function(user, done){

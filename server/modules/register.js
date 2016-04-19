@@ -12,10 +12,11 @@ router.post("/", function(req, res, next){
     var newUser = req.body;
     newUser.children = [];
     newUser.notifications = [true,true];
-    console.log("Made it up here! Saved : ", newUser);
-    User.create(req.body, function(err,post){
+    console.log("About to save: ", newUser);
+    User.create(newUser, function(err,post){
         if(err){
           next(err);
+          res.send({error: "Something went wrong, please try again!"});
         } else {
           res.redirect("/");
         }

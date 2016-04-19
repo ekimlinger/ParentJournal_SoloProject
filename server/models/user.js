@@ -8,7 +8,7 @@ var UserSchema = new Schema({
     password: {type: String, required: true},
     firstname: {type: String, required: true},
     lastname: {type: String, required: true},
-    children: {type: Array, required: true},
+    children: {type: Array, default: []},
     notifications: {type: Array, required: true},
     lastlogin: {type: Date, default: Date.now }
 });
