@@ -3,23 +3,49 @@
   <head>
     <meta charset="utf-8">
     <title>ParentJournal</title>
-    <script type="text/javascript" src="/assets/vendors/angular/angular.min.js"></script>
-    <script type="text/javascript" src="/assets/vendors/angular-animate/angular-animate.min.js"></script>
-    <script type="text/javascript" src="/assets/vendors/angular-messages/angular-messages.min.js"></script>
-    <script type="text/javascript" src="/assets/vendors/angular-aria/angular-aria.min.js"></script>
-    <script type="text/javascript" src="/assets/vendors/angular-material/angular-material.min.js"></script>
-    <script type="text/javascript" src="/assets/vendors/angular-route/angular-route.min.js"></script>
-
-
+    <!-- STYLES -->
+       <link rel="stylesheet" href="/assets/vendors/angular-material/angular-material.min.css">
+       <link rel="stylesheet" href="/assets/styles/loginStyles.css"  />
+       <!-- SCRIPTS -->
+       <script type="text/javascript" src="/assets/vendors/angular/angular.min.js"></script>
+       <script type="text/javascript" src="/assets/vendors/angular-animate/angular-animate.min.js"></script>
+       <script type="text/javascript" src="/assets/vendors/angular-messages/angular-messages.min.js"></script>
+       <script type="text/javascript" src="/assets/vendors/angular-aria/angular-aria.min.js"></script>
+       <script type="text/javascript" src="/assets/vendors/angular-material/angular-material.min.js"></script>
+       <script type="text/javascript" src="/assets/vendors/angular-route/angular-route.min.js"></script>
     <!-- MYSCRIPTS -->
-    <script type="text/javascript" src="/assets/scripts/app.js"></script>
-    <script type="text/javascript" src="/assets/scripts/controllers/viewController.js"></script>
-    <script type="text/javascript" src="/assets/scripts/controllers/homeController.js"></script>
-    <script type="text/javascript" src="/assets/scripts/controllers/loginController.js"></script>
-    <script type="text/javascript" src="/assets/scripts/controllers/viewController.js"></script>
-    <script type="text/javascript" src="/assets/scripts/factories/journalService.js"></script>
+    <script type="text/javascript" src="/assets/scripts/app.min.js"></script>
   </head>
   <body>
-    
+
+      <md-content class="md-whiteframe-12dp md-hue-4 myContent" layout-padding >
+
+
+        <md-toolbar layout-align="center center">
+          <h1 >Welcome to Parent Journal</h1>
+          <h3 >The easier way to keep track of your child’s life</h3>
+        </md-toolbar>
+
+        <form action="/login" method="post">
+
+
+            <p class="md-label">Email: </p>
+            <md-input-container class="md-block ngInput" flex-gt-xs>
+              <input type="text" name="username" id="username" />
+            </md-input-container>
+
+            <p class="md-label">Password: </p>
+            <md-input-container class="md-block ngInput" flex-gt-xs>
+              <input type="password" name="password" id="password" />
+            </md-input-container>
+
+          <div layout-gt-xs="row" layout-align="center center" >
+          <md-button class="md-raised md-primary" type="submit">Login</md-button>
+          <md-button class="md-raised md-warn"  href="/register">Create an Account!</md-button>
+          </div>
+        </form>
+        </md-content>
+
+
   </body>
 </html>

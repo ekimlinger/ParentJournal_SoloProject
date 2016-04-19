@@ -10,8 +10,13 @@ var localStrategy = require("passport-local");
 
 //MONGO
 var mongoose = require("mongoose");
-var mongoURI = "mongodb://localhost/parent_journal";
-var MongoDB = mongoose.connect(mongoURI).connection;
+var mongoURI =
+ process.env.MONGOLAB_URI ||
+ process.env.MONGOHQ_URL ||
+ 'mongodb://localhost/parent_journal';
+
+ var MongoDB = mongoose.connect(mongoURI).connection;
+
 
 //MODELS
 var User = require("./models/user.js");
@@ -51,15 +56,15 @@ MongoDB.once("open", function(err){
 //  SENDS EMAIL DAILY TO ALL USERS BASED ON PREFERENCES
 //  AND IF THEY HAVE POSTED TODAY OR THIS WEEK
 
-// var sendAllEmails = require("./modules/sendAllEmails.js");
+var sendAllEmails = require("./modules/sendAllEmails.js");
 
 // setInterval(function(){ // Set interval for checking
 //     var date = new Date(); // Create a Date object to find out what time it is
-//     if(date.getHours() === 18 && date.getMinutes() === 0){ // Check the time
+//     if(date.getHours() === 21 && date.getMinutes() === 38){ // Check the time
 //       sendAllEmails();
 //     }
 // }, 60000);
-
+sendAllEmails();
 
 //PASSPORT SESSION
 passport.serializeUser(function(user, done){

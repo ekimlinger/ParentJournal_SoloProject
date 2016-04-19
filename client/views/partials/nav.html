@@ -1,7 +1,10 @@
-<md-content>
-  <section layout="row" layout-xs="row" layout-align="center center" layout-wrap>
-        <md-button href="#home">HOME</md-button>
-        <md-button href="#add">ADD</md-button>
-        <md-button href="#view">VIEW</md-button>
-  </section>
-</md-content>
+
+<md-sidenav class="md-sidenav-left md-whiteframe-4dp myNav" md-component-id="left">
+  <md-content ng-controller="LeftCtrl" layout="column" layout-padding>
+    <md-button ng-click="close()" class="md-primary" href="#home">Home</md-button>
+    <md-button ng-click="close()" class="md-primary" href="#add">Add</md-button>
+    <md-button ng-click="close()" class="md-primary" href="#view">View</md-button>
+    <md-button ng-click="close()" class="md-warn" href="/logout">Logout</md-button>
+
+  </md-content>
+</md-sidenav>

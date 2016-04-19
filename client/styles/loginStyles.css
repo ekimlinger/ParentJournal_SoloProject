@@ -1,0 +1,25 @@
+body{
+  background: url('/assets/images/PlaygroundBench.jpg');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 5%;
+
+}
+h1{
+  font-size: 30px;
+  font-weight: bolder;
+  margin: 10px auto;
+}
+h3{
+  font-size: 20px;
+  font-weight: 300;
+  margin: 10px auto;
+}
+.ngInput, p{
+  margin-bottom: 0px;
+}
+md-content{
+  max-width : 500px;
+  margin: auto;
+}
