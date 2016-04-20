@@ -36,6 +36,7 @@ app.use(session({
     cookie: {maxAge: 6000000000000000000000000000, secure: false}
 }));
 
+
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
