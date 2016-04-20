@@ -1,5 +1,5 @@
 {
-  "name": "_ParentJournal",
+  "name": "ParentJournal",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,7 +8,7 @@
     "start": "node server/app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Evan Kimlinger",
   "license": "ISC",
   "dependencies": {
     "angular": "^1.5.3",

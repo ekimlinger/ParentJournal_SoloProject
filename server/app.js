@@ -11,8 +11,8 @@ var localStrategy = require("passport-local");
 //MONGO
 var mongoose = require("mongoose");
 var mongoURI =
- process.env.MONGOLAB_URI ||
- process.env.MONGOHQ_URL ||
+ // process.env.MONGOLAB_URI ||
+ // process.env.MONGOHQ_URL ||
  'mongodb://heroku_6kldsp05:KVrXHRxYCskhDmd96CkC35aZy0M=@ds013951.mlab.com:13951/heroku_6kldsp05';
  // 'mongodb://localhost/parent_journal';
 
