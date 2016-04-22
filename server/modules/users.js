@@ -31,7 +31,8 @@ router.put("/notifications", function(req,res,next){
   var emails = req.body;
   if(req.isAuthenticated()){
     console.log("reqIsAuth, updating email list: ", emails);
-    User.update({id: req.id},
+    console.log(req);
+    User.update({_id: req.id},
       { notifications : emails}, function(err){
       if(err){
         console.log(err);
@@ -62,7 +63,7 @@ router.delete("/deleteChild/:childID",function(req,res,next){
   if(req.isAuthenticated()){
     var childID = parseInt(req.params.childID);
     var userID = req.user.username;
-    console.log("User : ", req.user.username);
+    console.log("childID: ", childID);
 
     var reqDate = req.params.date;
     User.find({username: userID}, function(err,data){
@@ -71,7 +72,8 @@ router.delete("/deleteChild/:childID",function(req,res,next){
         res.send();
       } else{
         var childArray = data[0].children;
-        childArray.splice(childID);
+        console.log("Array before splice: ", childArray);
+        childArray.splice(childID, 1);
         console.log("Array after splice: ", childArray);
         User.update(
           {username: userID},

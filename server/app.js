@@ -13,7 +13,6 @@ var mongoose = require("mongoose");
 var mongoURI =
  process.env.MONGOLAB_URI ||
  process.env.MONGOHQ_URL ||
- 'mongodb://heroku_6kldsp05:lfkfhr248c2uuuds2dnsprqp6s@ds013951.mlab.com:13951/heroku_6kldsp05' ||
  'mongodb://localhost/parent_journal';
 
  var MongoDB = mongoose.connect(mongoURI).connection;

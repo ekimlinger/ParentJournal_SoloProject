@@ -10,7 +10,7 @@
 
           <h3 class="md-label"><strong>Child:</strong></h3>
           <md-input-container class="md-block" layout-align="center center" flex-gt-xs>
-            <md-select ng-model="entry.child"  layout-align="center center" ng-required="required" required>
+            <md-select ng-model="entry.child"  layout-align="center center" ng-required="(entry.child == '' ? 'true' : 'false')" required>
               <md-option ng-repeat="child in user.children" value="{{child.firstname}}"><strong>{{child.firstname}}</strong></md-option>
             </md-select>
           </md-input-container>
@@ -18,7 +18,7 @@
           <h3 class="md-label">Today's Rating:
           </h3>
           <md-input-container class="md-block" layout-align="center center" flex-gt-xs>
-            <md-select ng-model="entry.rating" layout-align="center center" ng-required="required" required>
+            <md-select ng-model="entry.rating" layout-align="center center" >
               <md-option value="5" layout-align="center center">★★★★★</md-option>
               <md-option value="4" layout-align="center center">★★★★</md-option>
               <md-option value="3" layout-align="center center">★★★</md-option>
@@ -28,7 +28,7 @@
           </md-input-container>
           <div>
             <div layout-align="center end">
-              <md-datepicker class="md-hue-4" style="background: inherit;" ng-model="entry.date" md-placeholder="Enter date" ng-required="required" required></md-datepicker>
+              <md-datepicker class="md-hue-4" style="background: inherit;" ng-model="entry.date" md-placeholder="Enter date" ng-required="(entry.date == '' ? 'true' : 'false')"></md-datepicker>
             </div>
           </div>
 
@@ -56,7 +56,7 @@
 
         <md-input-container layout="column">
           <h3 class="md-label">Journal Entry</h3>
-          <textarea ng-model="entry.journal" rows="5" md-maxlength="1000" md-select-on-focus ng-required="required" required></textarea>
+          <textarea ng-model="entry.journal" rows="5" md-maxlength="1000" md-select-on-focus ng-required="(entry.journal == '' ? 'true' : 'false')"></textarea>
         </md-input-container>
 
         <md-input-container class="md-block">
@@ -66,7 +66,7 @@
 
         <div layout-gt-xs="row" layout="column" layout-align="center center">
 
-          <md-button class="md-raised md-primary" class="md-block" ng-click="submit(entry)">Submit</md-button>
+          <md-button class="md-raised md-primary" type="submit" class="md-block" ng-click="submit(entry)">Submit</md-button>
 
         </div>
       </form>
