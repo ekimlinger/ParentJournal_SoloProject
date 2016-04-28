@@ -51,7 +51,7 @@ myApp.controller("ViewController", ["$scope","$filter", "$mdToast", "$mdDialog",
   //Function to diolouge
   //requires use of partials/editEntry.tmpl.html && DialogController
   $scope.editEntries = function(entry) {
-    console.log(entry.date);
+
     currentEntry._id = entry._id;
     currentEntry.rating = entry.rating;
     currentEntry.accomplishments = entry.accomplishments;
@@ -59,8 +59,8 @@ myApp.controller("ViewController", ["$scope","$filter", "$mdToast", "$mdDialog",
     currentEntry.journal = entry.journal;
     currentEntry.things = entry.things;
     currentEntry.child = entry.child;
-    currentEntry.date = new Date($scope.date);
-
+    currentEntry.date = $scope.date;
+    console.log(currentEntry.date);
 
     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
     $mdDialog.show({
@@ -98,7 +98,6 @@ myApp.controller("ViewController", ["$scope","$filter", "$mdToast", "$mdDialog",
     };
 
     $scope.saveEntry = function(entry) {
-        entry.date = $filter("date")()
         JournalService.editEntries(entry);
         $mdDialog.hide(entry);
     };

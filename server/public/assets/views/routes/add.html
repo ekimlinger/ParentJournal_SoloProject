@@ -10,7 +10,7 @@
 
           <h3 class="md-label"><strong>Child:</strong></h3>
           <md-input-container class="md-block" layout-align="center center" flex-gt-xs>
-            <md-select ng-model="entry.child"  layout-align="center center" ng-required="(entry.child == '' ? 'true' : 'false')" required>
+            <md-select ng-model="entry.child"  layout-align="center center">
               <md-option ng-repeat="child in user.children" value="{{child.firstname}}"><strong>{{child.firstname}}</strong></md-option>
             </md-select>
           </md-input-container>
@@ -28,7 +28,7 @@
           </md-input-container>
           <div>
             <div layout-align="center end">
-              <md-datepicker class="md-hue-4" style="background: inherit;" ng-model="entry.date" md-placeholder="Enter date" ng-required="(entry.date == '' ? 'true' : 'false')"></md-datepicker>
+              <md-datepicker class="md-hue-4" style="background: inherit;" ng-model="entry.date" md-placeholder="Enter date"></md-datepicker>
             </div>
           </div>
 
@@ -56,7 +56,7 @@
 
         <md-input-container layout="column">
           <h3 class="md-label">Journal Entry</h3>
-          <textarea ng-model="entry.journal" rows="5" md-maxlength="1000" md-select-on-focus ng-required="(entry.journal == '' ? 'true' : 'false')"></textarea>
+          <textarea ng-model="entry.journal" rows="5" md-maxlength="1000" md-select-on-focus></textarea>
         </md-input-container>
 
         <md-input-container class="md-block">

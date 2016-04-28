@@ -2,3 +2,4 @@ node_modules
 currentBugs.md
 Gruntfile.js
 plansToTakeOverTheWorld.md
+npm-debug.log
