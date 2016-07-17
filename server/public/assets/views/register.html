@@ -26,35 +26,36 @@
       </md-toolbar>
       <form action="/register" method="post">
 
-          <p class="md-label">First Name:
-          </p>
+          <!-- <p class="md-label">First Name: </p> -->
           <md-input-container class="md-icon-float md-block">
+            <label for="firstname">First Name: </label>
             <input type="text" name="firstname" id="firstname" required/>
           </md-input-container>
 
 
 
-        <p class="md-label">Last Name:</p>
+        <!-- <p class="md-label">Last Name: </p> -->
         <md-input-container class="md-icon-float md-block">
+          <label for="lastname">Last Name:</label>
           <input type="text" name="lastname" id="lastname" required/>
         </md-input-container>
 
-        <p class="md-label" for="username">Email:
-        </p>
+        <!-- <p class="md-label" for="username">Email:</p> -->
         <md-input-container class="md-icon-float md-block">
+          <label for="username">Email: </label>
           <input type="text" name="username" id="username" required/>
         </md-input-container>
 
-        <p class="md-label" for="password">Password:
-        </p>
+        <!-- <p class="md-label" for="password">Password:</p> -->
         <md-input-container class="md-icon-float md-block">
+          <label for="password">Password: </label>
           <input type="password" name="password" id="password" required/>
         </md-input-container>
 
         <div layout-gt-xs="row" layout-align="center center">
           <md-button class="md-raised md-primary" type="submit">Register</md-button>
 
-          <md-button class="md-raised md-warn" href="/">Login</md-button>
+          <md-button class="md-flat md-button" href="/">Back to Login</md-button>
         </div>
       </form>
     </md-content>

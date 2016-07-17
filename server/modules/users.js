@@ -21,9 +21,9 @@ router.post("/addChild",function(req,res,next){
         console.log(err);
       }
     });
-    res.send("Added: ", newChild);
+    res.send(newChild);
   }else{
-    res.send("Not logged in, failed to add: ", newChild);
+    res.send(newChild);
   }
 });
 
@@ -31,14 +31,14 @@ router.put("/notifications", function(req,res,next){
   var emails = req.body;
   if(req.isAuthenticated()){
     console.log("reqIsAuth, updating email list: ", emails);
-    console.log(req);
-    User.update({_id: req.id},
+    console.log(req.id);
+    User.update({_id: req.user.id},
       { notifications : emails}, function(err){
       if(err){
         console.log(err);
       }
     });
-    res.send("Updated notifications: ", emails);
+    res.send(emails);
   }else{
     res.send("Not logged in, failed to update notifications");
   }
@@ -47,15 +47,15 @@ router.put("/email", function(req,res,next){
   if(req.isAuthenticated()){
     var emailAddress = req.body.new1;
     console.log("reqIsAuth, updating email list: ", emailAddress);
-    User.update({id: req.id},
+    User.update({id: req.user.id},
       { username : emailAddress}, function(err){
       if(err){
         console.log(err);
       }
     });
-    res.send("Updated emails: ", emailAddress);
+    res.send(emailAddress);
   }else{
-    res.send("Not logged in, failed to update notifications");
+    res.send("Not logged in, failed to update email address");
   }
 });
 
@@ -81,9 +81,8 @@ router.delete("/deleteChild/:childID",function(req,res,next){
             if(err){
               console.log(err);
             } else{
-
+              res.send("You successfully removed a child! :(");
             }
-          res.send("You successfully removed a child! :(");
         });
       }
     });
@@ -105,6 +104,7 @@ router.get("/name", function(req,res,next){
           lastname: req.user.lastname,
           children:
           req.user.children,
+          password: req.user.password,
           notifications: req.user.notifications,
           datecreated: req.user.lastlogin
       };

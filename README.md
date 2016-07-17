@@ -1,16 +1,26 @@
-# PARENT JOURNAL
-Project #0x1092
-Client Name
-April 4, 2016 / SOW Version #1.0.0
+# Parent Journal
+
+Parent Journal is an application allows you to store journal entries for multiple children by day, and access them at your convenience.
+
+Each daily journal entry consists of your child’s favorite things, quotes, accomplishments, and any notes that you would like to save about them.
+
+## Usage
+
+Parent Journal is available for public use at www.parentjournal.herokuapp.com.
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch: `git checkout -b my-new-feature`
+3. Commit your changes: `git commit -am 'Add some feature'`
+4. Push to the branch: `git push origin my-new-feature`
+5. Submit a pull request
+
+## History
+
+Originally started as a 2 week solo project during my time at Prime Digital Academy, Parent Journal remains an ongoing project.
 
 
+## License
 
-## DOCUMENT OBJECTIVE
-
-The purpose of this document is to provide detailed documentation that clearly defines the work that Linger Technologies will perform, your requirements and specifications under which that work will be performed, and the deliverables you will receive within the scope of this project. By accepting this document you acknowledge your understanding and agreement to this scope of work. Any requirement, which falls outside the specifications in this document, will be considered “Out of Scope” and may require significant changes to the budget or timeline established for this project.
-This document supersedes the estimate and any other documentation provided regarding the work to be performed by Linger Technologies.
-
-
-## Scope of Work Details
-
-Linger Technologies will provide end-to-end development services in the process in creating The Client’s Parent Journal (referred in this document as “the application”). The application is designed for parents to keep daily logs of one child, and reminisce on past entries they have created for that child. In a navigable and aesthetically pleasing manner, the user will be able to efficiently add, edit, view, and delete entries upon will. In order to effectively meet the client’s requirements, Linger Technologies is solely responsible for all design and functionality aspects hereby stated under each Component section in this document.
+Copyright Evan Kimlinger. All rights reserved.
