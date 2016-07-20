@@ -39,3 +39,6 @@ md-toast{
 .fade.ng-hide-add {
   transition: all linear 500ms;
 }
+md-input-container.md-default-theme label, md-input-container label, md-input-container.md-default-theme .md-placeholder, md-input-container .md-placeholder{
+  color: white;
+}
