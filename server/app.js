@@ -13,8 +13,7 @@ var mongoose = require("mongoose");
 var mongoURI =
  process.env.MONGOLAB_URI ||
  process.env.MONGOHQ_URL ||
- //'mongodb://127.0.0.1:27017/parent_journal' ||       //use this string on local only
- 'mongodb://parentJournalAdmin:seven89Ten@ds013951.mlab.com:13951/heroku_6kldsp05';
+ 'mongodb://127.0.0.1:27017/parent_journal';
 
  var MongoDB = mongoose.connect(mongoURI).connection;
 

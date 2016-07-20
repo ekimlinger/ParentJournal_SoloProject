@@ -43,6 +43,48 @@ router.put("/notifications", function(req,res,next){
     res.send("Not logged in, failed to update notifications");
   }
 });
+
+router.put("/password", function(req,res,next){
+  if(req.isAuthenticated()){
+    if(req.body.new1 === req.body.new2){
+      var newPassword = req.body.new1;
+      var oldPassword = req.body.old;
+      //Find user that's logged in
+      console.log("User id: ", req.user.id);
+      User.findById(req.user._id, function(err, data){
+        if(err){
+          console.log(err);
+        } else{
+          //Confirm and change existing password
+          data.comparePassword(oldPassword, function(err, isMatch){
+            //Change password if it's a match
+            if(isMatch){
+              // console.log("Changing Password");
+              data.password = newPassword;
+              data.save(function (err) {
+                if (err) {
+                  console.log("Error saving to db: ", err);
+                  res.status(500).send(err)
+                }else{
+                  console.log(data);
+                  res.status(200);
+                }
+              });
+            } else{
+              // console.log("Password not confirmed");
+              res.status(400).send("Password not confirmed")
+            }
+          });
+        }
+      });
+    }else{
+      res.status(400).send("Passwords not matched");
+    }
+  }else{
+    res.send(403).send("Not logged in, failed to update password");
+  }
+});
+
 router.put("/email", function(req,res,next){
   if(req.isAuthenticated()){
     var emailAddress = req.body.new1;

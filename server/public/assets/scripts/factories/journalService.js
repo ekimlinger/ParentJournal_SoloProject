@@ -98,7 +98,9 @@ myApp.factory("JournalService", ["$http",'$window','$filter', function($http, $w
       });
     };
     var changePassword = function(passwordPack){
-      console.log("changePassword doesn't do anything yet (in factory): ", passwordPack);
+      $http.put("/user/password", passwordPack).then(function(response){
+        console.log("Attempted to change password: ", response)
+      })
     };
     var savePreferences = function(noteArray){
       for (var i; i< noteArray.length; i++){
