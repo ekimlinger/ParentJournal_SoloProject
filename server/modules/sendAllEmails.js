@@ -7,24 +7,55 @@ var Entry = require('../models/entries.js');
 var User = require("../models/user");
 
 
-// User.find({}, function(err,data){
-//   var allUsersArray = data;
-//   for (var i = 0; i < allUsersArray.length; i++) {
-//     var currentUser = allUsersArray[i];
-//     console.log(currentUser.id);
-//     Entry.find({user: currentUser.id, date: Date.now()}, function(err,data){
-//       if(err){
-//         console.log(err);
+User.find({ "notifications.0" : true }, function(err,data){
+  if(err){
+    console.log(err);
+  }else{
+    var dailyEmailList = data;
+    // console.log(dailyEmailList);
+    // dailyEmailList.forEach(checkDailyEntries);
+  }
+});
+User.find({ "notifications.1" : true }, function(err,data){
+  if(err){
+    console.log(err);
+  }else{
+    var weeklyEmailList = data;
+    // console.log(weeklyEmailList);
+    // weeklyEmailList.forEach();
+  }
+});
+
+
+
+// WORKING ON THIS
+
+// function checkDailyEntries(user, index){
+//   var currentUser = user;
+//   console.log(currentUser._id);
+//   Entry.find({user: currentUser._id, date: Date.now()}, function(err, data){
+//     if(err){
+//       console.log(err);
+//     } else{
+//       console.log("Data from Entry find:", data);
+//       if(data === "[]"){
+//         console.log("This user has no entries today: ", currentUser.username);
 //       } else{
-//         if(data){
-//           console.log("This user doesn't have an entry today: ", currentUser.username);
-//         } else{
-//           console.log("This user has an entry today: ", currentUser.username, data);
-//         }
+//         console.log("This user has made an entry today: ", currentUser.username, data);
 //       }
-//     });
-//   }
-// });
+//     }
+//   });
+// }
+
+// //Get users that need dailyEmails store users in array
+// //Get users that need weeklyEmails store users in array
+//
+// //Find users that haven't posted an entry today
+// //Find users that haven't posted an entry this week
+//
+// //Find
+//
+//
 function sendAllEmails(){
   sendDaily("ekimlinger@gmail.com");
   sendWeekly("ekimlinger@gmail.com");

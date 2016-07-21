@@ -35,6 +35,7 @@ myApp.controller("SettingsController", ["$scope", "$filter", "$mdDialog", "$mdMe
             fullscreen: useFullScreen
           })
           .then(function(answer) {
+            console.log(answer);
             $scope.status = 'Changed Email Address';
           }, function() {
             $scope.status = "";
@@ -58,6 +59,7 @@ myApp.controller("SettingsController", ["$scope", "$filter", "$mdDialog", "$mdMe
             fullscreen: useFullScreen
           })
           .then(function(answer) {
+            console.log(answer);
             $scope.status = 'Updated Notifications';
           }, function() {
             $scope.status = "";
@@ -81,7 +83,9 @@ myApp.controller("SettingsController", ["$scope", "$filter", "$mdDialog", "$mdMe
             fullscreen: useFullScreen
           })
           .then(function(answer) {
+            console.log("Returned Answer is: ", answer);
             $scope.status = 'Changed Password';
+
           }, function() {
             $scope.status = "";
           });
@@ -169,8 +173,8 @@ myApp.controller("SettingsController", ["$scope", "$filter", "$mdDialog", "$mdMe
           $scope.savePassword = function(password) {
 
             if (password.new1 == password.new2) {
-              JournalService.changePassword(password);
-              $mdDialog.hide(password);
+              JournalService.changePassword(password)
+              $mdDialog.hide();
             } else {
               $scope.changeStatus = "Passwords Not Matched!"
             }

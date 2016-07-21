@@ -99,8 +99,9 @@ myApp.factory("JournalService", ["$http",'$window','$filter', function($http, $w
     };
     var changePassword = function(passwordPack){
       $http.put("/user/password", passwordPack).then(function(response){
-        console.log("Attempted to change password: ", response);
+        console.log("Completed password change: ", response.data);
         getName();
+        return response.data;
       });
     };
     var savePreferences = function(noteArray){

@@ -67,7 +67,7 @@ router.put("/password", function(req,res,next){
                   res.status(500).send(err)
                 }else{
                   console.log(data);
-                  res.status(200);
+                  res.status(200).send(true);
                 }
               });
             } else{
