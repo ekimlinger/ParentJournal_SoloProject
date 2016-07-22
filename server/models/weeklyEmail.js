@@ -15,13 +15,18 @@ var weeklyEmail = function(username){
   }
 };
 
-var sendWeekly = function(username){
-  transporter.sendMail(weeklyEmail(username), function(error, info){
-    if(error){
-        return console.log(error);
-    }
-    console.log('Message sent: ' + info.response);
-  });
+var sendWeekly = function(usernameList){
+  console.log("Sending weekly emails to: ", usernameList);
+  for (var i = 0; i < usernameList.length; i++) {
+    var username = usernameList[i];
+    transporter.sendMail(weeklyEmail(username), function(error, info){
+      if(error){
+          return console.log(error);
+      }
+      console.log('Message sent: ' + info.response);
+    });
+  }
+
 };
 
 module.exports = sendWeekly;

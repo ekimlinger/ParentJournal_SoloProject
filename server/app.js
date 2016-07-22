@@ -60,12 +60,12 @@ MongoDB.once("open", function(err){
 
 var sendAllEmails = require("./modules/sendAllEmails.js");
 
-// setInterval(function(){ // Set interval for checking
-//     var date = new Date(); // Create a Date object to find out what time it is
-//     if(date.getHours() === 21 && date.getMinutes() === 38){ // Check the time
-//       sendAllEmails();
-//     }
-// }, 60000);
+setInterval(function(){ // Set interval for checking
+    var date = new Date(); // Create a Date object to find out what time it is
+    if(date.getHours() === 22 && date.getMinutes() === 54){ // Check the time
+      sendAllEmails();
+    }
+}, 60000);
 // sendAllEmails();
 
 //PASSPORT SESSION

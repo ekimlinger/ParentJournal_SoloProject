@@ -17,13 +17,17 @@ var dailyEmail = function(username){
           }
 };
 
-var sendDaily = function(username){
-  transporter.sendMail(dailyEmail(username), function(error, info){
-    if(error){
-        return console.log(error);
-    }
-    console.log('Message sent: ' + info.response);
-  });
+var sendDaily = function(usernameList){
+  console.log("Sending emails to: ", usernameList);
+  for (var i = 0; i < usernameList.length; i++) {
+    var username = usernameList[i];
+    transporter.sendMail(dailyEmail(username), function(error, info){
+      if(error){
+          return console.log(error);
+      }
+      console.log('Message sent: ' + info.response);
+    });
+  }
 }
 
 module.exports = sendDaily;
