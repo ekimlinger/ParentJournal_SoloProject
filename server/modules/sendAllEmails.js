@@ -130,6 +130,14 @@ setInterval(function(){ // Set interval for checking
 function sendAllEmails(){
   if(moment().weekday() == 7){
     // Remove users from daily that are in weekly (no duplicate emails being sent)
+    for (var i = 0; i < globalWeeklyInactive.length; i++) {
+      var username = globalWeeklyInactive[i];
+      for (var j = 0; j < globalDailyInactive.length; i++) {
+        if(username == globalDailyInactive[j]){
+          globalDailyInactive.slice(j,1);
+        }
+      }
+    }
     sendWeekly(globalWeeklyInactive);
   } else{
     sendDaily(globalDailyInactive);
