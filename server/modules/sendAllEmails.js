@@ -21,12 +21,10 @@ var updateDailyEmailList = function(){
       console.log(err);
     }else{
       for (var i = 0; i < data.length; i++) {
-        var username = data[i].username;
-        globalDaily.push(username);
+        var user = data[i];
+        globalDaily.push(user);
       }
     }
-    // console.log("Daily email subscribers: ", dailyEmailList, dailyEmailList.length);
-    return dailyEmailList;
   });
 }
 
@@ -38,87 +36,105 @@ var updateWeeklyEmailList = function() {
       var weeklyEmailList = [];
       for (var i = 0; i < data.length; i++) {
         var user = data[i];
-        globalWeekly.push(user.username)
+        globalWeekly.push(user)
       }
-      // console.log("Weekly email subscribers: ", weeklyEmailList);
-      return weeklyEmailList;
     }
   });
 }
 
 
-
-// Checks the dailyEmailList and returns the users that haven't posted
+// Runs through email list to perform check
 function checkDailyEntries(){
-  console.log("Daily email list ", globalDaily);
-  for (var i = 0; i < globalDaily.length; i++) {
-    var currentUser = globalDaily[i]
-    var currentDate = new Date().toISOString().slice(0,10);
-    console.log(currentDate);
-    Entry.find({user: currentUser._id, date: currentDate}, function(err, data){
-      if(err){
-        console.log(err);
-      } else{
-        if(data[0] === undefined){
-          if(globalDailyInactive.indexOf(currentUser.username) == -1){
-            globalDailyInactive.push(currentUser.username);
-          }
-        }
+  globalDailyInactive = [];
+  console.log("Daily email list length", globalDaily.length);
+  globalDaily.forEach(checkDailyUser);
+}
+
+// Checks user's entries individually and adds to list if they haven't made any
+function checkDailyUser(user){
+  var date = new Date().toISOString().slice(0,10);
+  Entry.find({user: user._id, date: date}, function(err, data){
+    if(err){
+      console.log(err);
+    } else{
+      if(data.length === 0){
+        globalDailyInactive.push(user.username);
       }
-    });
-    console.log("Inactive users for today: ", globalDailyInactive);
-  }
-}
-
-//Checks the weeklyEmailList and returns users that haven't posted
-function checkWeeklyEntries(){
-  for (var i = 0; i < globalWeekly.length; i++) {
-    var currentUser = globalWeekly[i];
-    var currentDate = new Date().toISOString().slice(0,10);
-    //need to push in last 7 days
-    var datesToCheck = [];
-    for (var i = 0; i < datesToCheck.length; i++) {
-      Entry.find({user: currentUser._id, date: datesToCheck[i]}, function(err, data){
-        if(err){
-          console.log(err);
-        } else{
-          if(data[0] === undefined){
-            if(globalWeeklyInactive.indexOf(currentUser.username) == -1){
-              globalWeeklyInactive.push(currentUser.username)
-            }
-          }
-        }
-      });
     }
-  }
-  console.log("Inactive users for this week: ", globalWeeklyInactive);
+  });
 }
 
+// Runs through email list to perform check
+function checkWeeklyEntries(){
+  globalWeeklyInactive = [];
+  console.log("Weekly email list length", globalWeekly.length);
+  globalWeekly.forEach(checkWeeklyUser);
+}
 
+// Checks user's entries individually and adds to list if they haven't made any
+function checkWeeklyUser(user){
+  var last7dates = [];
+  for (var i = 0; i < 7; i++) {
+    last7dates.push(moment().subtract(i,"days").format("YYYY-MM-DD"))
+  }
+  Entry.find({user: user._id, date: {$in: last7dates}}, function(err, data){
+    if(err){
+      console.log(err);
+    } else{
+      console.log("Data length from user search: ", data.length, user.username);
+      if(data.length === 0){
+        globalWeeklyInactive.push(user.username);
+        console.log("Pushing weekly inactive users: ", globalWeeklyInactive);
+      }
+    }
+  });
+}
 
+//Initiate email lists from db
+updateDailyEmailList();
+updateWeeklyEmailList();
 
 //Check for subscription changes daily
 setInterval(function(){
     var date = new Date(); // Create a Date object to find out what time it is
-    if(date.getHours() === 17 && date.getMinutes() === 10){ // Check the time
+    if(date.getHours() === 19 && date.getMinutes() === 58){ // Check the time
       updateDailyEmailList();
-      updateWeeklyEmailList();
+      if(moment().weekday() == 7){
+        updateWeeklyEmailList();
+      }
+    }
+    // console.log("daily email list: ", globalDaily);
+}, 60000);
+
+//Checks if subscribed users have made entires daily
+setInterval(function(){
+    var date = new Date(); // Create a Date object to find out what time it is
+    if(date.getHours() === 19 && date.getMinutes() === 59){ // Check the time
+      checkDailyEntries();
+      if(moment().weekday() == 7){
+        checkWeeklyEntries();
+      }
     }
 }, 60000);
 
-//Check for subscription changes daily
-setInterval(function(){
+//
+setInterval(function(){ // Set interval for checking
     var date = new Date(); // Create a Date object to find out what time it is
-    if(date.getHours() === 23 && date.getMinutes() === 55){ // Check the time
-      checkDailyEntries();
-      checkWeeklyEntries();
+    if(date.getHours() === 20 && date.getMinutes() === 00){ // Check the time
+      sendAllEmails();
     }
-}, 30000);
+}, 60000);
+// sendAllEmails();
 
 
 function sendAllEmails(){
-  sendDaily(globalDaily);
-  sendWeekly(globalWeekly);
+  if(moment().weekday() == 7){
+    // Remove users from daily that are in weekly (no duplicate emails being sent)
+    sendWeekly(globalWeeklyInactive);
+  } else{
+    sendDaily(globalDailyInactive);
+  }
 }
+
 
 module.exports = sendAllEmails;

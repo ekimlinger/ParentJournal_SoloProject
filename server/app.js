@@ -54,20 +54,6 @@ MongoDB.once("open", function(err){
 });
 
 
-//  *********** CURRENTLY UNDER MAINTENANCE ************
-//  SENDS EMAIL DAILY TO ALL USERS BASED ON PREFERENCES
-//  AND IF THEY HAVE POSTED TODAY OR THIS WEEK
-
-var sendAllEmails = require("./modules/sendAllEmails.js");
-
-setInterval(function(){ // Set interval for checking
-    var date = new Date(); // Create a Date object to find out what time it is
-    if(date.getHours() === 22 && date.getMinutes() === 54){ // Check the time
-      sendAllEmails();
-    }
-}, 60000);
-// sendAllEmails();
-
 //PASSPORT SESSION
 passport.serializeUser(function(user, done){
     done(null, user.id);
@@ -103,6 +89,14 @@ passport.use("local", new localStrategy({
 ));
 
 
+//  *********** CURRENTLY UNDER MAINTENANCE ************
+//  SENDS EMAIL DAILY TO ALL USERS BASED ON PREFERENCES
+//  AND IF THEY HAVE POSTED TODAY OR THIS WEEK
+
+var sendAllEmails = require("./modules/sendAllEmails.js");
+
+
+// Routers
 app.post("/login", passport.authenticate("local", {
     successRedirect: "/assets/views/index.html",
     failureRedirect: "/assets/views/login.html"
