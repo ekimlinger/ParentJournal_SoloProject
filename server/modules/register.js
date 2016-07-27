@@ -18,7 +18,7 @@ router.post("/", function(req, res, next){
           next(err);
           res.send({error: "Something went wrong, please try again!"});
         } else {
-          res.redirect("/");
+          res.redirect("/newUser");
         }
     });
 });

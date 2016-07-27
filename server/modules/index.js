@@ -136,6 +136,13 @@ router.get("/logout", function(req, res) {
   res.redirect('/');
 });
 
+router.get("/login", function(req, res) {
+  res.sendFile(path.join(__dirname,"../public/assets/views/login.html"));
+});
+router.get("/newUser", function(req, res) {
+  res.sendFile(path.join(__dirname,"../public/assets/views/new-user.html"));
+});
+
 
 router.get("/*", function(req, res) {
   if (req.isAuthenticated()) {

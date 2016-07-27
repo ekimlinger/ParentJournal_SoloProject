@@ -11,9 +11,9 @@ var localStrategy = require("passport-local");
 //MONGO
 var mongoose = require("mongoose");
 var mongoURI =
- process.env.MONGODB_URI ||
- process.env.MONGOHQ_URL ||
- 'mongodb://127.0.0.1:27017/parent_journal';
+    process.env.MONGODB_URI ||
+    process.env.MONGOHQ_URL ||
+    'mongodb://127.0.0.1:27017/parent_journal';
 
 var MongoDB = mongoose.connect(mongoURI).connection;
 
@@ -34,59 +34,69 @@ app.use(session({
     resave: true,
     saveUninitialized: true,
     s: false,
-    cookie: {maxAge: 6000000000000000000000000000, secure: false}
+    cookie: {
+        maxAge: 6000000000000000000000000000,
+        secure: false
+    }
 }));
 
 
 app.use(cookieParser());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
 
-MongoDB.on("error", function(err){
+MongoDB.on("error", function(err) {
     console.log("Mongo Connection Error: ", err);
 });
 
-MongoDB.once("open", function(err){
+MongoDB.once("open", function(err) {
     console.log("Mongo Connection Open on: ", mongoURI);
 });
 
 
 //PASSPORT SESSION
-passport.serializeUser(function(user, done){
+passport.serializeUser(function(user, done) {
     done(null, user.id);
 });
 
-passport.deserializeUser(function(id, done){
-    User.findById(id, function(err, user){
-        if(err) done(err);
+passport.deserializeUser(function(id, done) {
+    User.findById(id, function(err, user) {
+        if (err) done(err);
         done(null, user);
     });
 });
 
 passport.use("local", new localStrategy({
-      passReqToCallback : true,
-      usernameField: 'username'
-    }, function(req, username, password, done){
-        User.findOne({username: username}, function(err,user){
-            if(err) throw err;
-            if(!user){
-              return done(null, false, {message: "Incorrect username or password"});
-            }
-
-            user.comparePassword(password, function(err, isMatch){
-                if(err) throw err;
-                if(isMatch){
-                  return done(null, user);
-                } else {
-                  done( null, false, {message: "Incorrect username or password"});
-                }
+    passReqToCallback: true,
+    usernameField: 'username'
+}, function(req, username, password, done) {
+    User.findOne({
+        username: username
+    }, function(err, user) {
+        if (err) throw err;
+        if (!user) {
+            return done(null, false, {
+                message: "Incorrect username or password"
             });
+        }
+
+        user.comparePassword(password, function(err, isMatch) {
+            if (err) throw err;
+            if (isMatch) {
+                return done(null, user);
+            } else {
+                done(null, false, {
+                    message: "Incorrect username or password"
+                });
+            }
         });
-    }
-));
+    });
+}));
 
 
 //  *********** CURRENTLY UNDER MAINTENANCE ************
@@ -99,17 +109,17 @@ var sendAllEmails = require("./modules/sendAllEmails.js");
 // Routers
 app.post("/login", passport.authenticate("local", {
     successRedirect: "/assets/views/index.html",
-    failureRedirect: "/assets/views/login.html"
+    failureRedirect: "/assets/views/failed-login.html"
 }));
 
 app.use('/register', register);
 app.use('/user', user);
 app.use('/', router);
 
-app.set("port",(process.env.PORT || 3000));
+app.set("port", (process.env.PORT || 3000));
 
-app.listen(app.get("port"),function(){
-  console.log("Listening on port: ", app.get("port"));
+app.listen(app.get("port"), function() {
+    console.log("Listening on port: ", app.get("port"));
 });
 
 
