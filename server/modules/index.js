@@ -139,7 +139,7 @@ router.get("/logout", function(req, res) {
 router.get("/login", function(req, res) {
   res.sendFile(path.join(__dirname,"../public/assets/views/login.html"));
 });
-router.get("/newUser", function(req, res) {
+router.get("/new-user", function(req, res) {
   res.sendFile(path.join(__dirname,"../public/assets/views/new-user.html"));
 });
 

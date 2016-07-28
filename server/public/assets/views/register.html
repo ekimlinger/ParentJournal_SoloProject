@@ -17,10 +17,13 @@
 
     <!-- MYSCRIPTS -->
     <script type="text/javascript" src="/assets/scripts/app.js"></script>
+    <script type="text/javascript" src="/assets/scripts/controllers/register-controller.js">
+
+    </script>
   </head>
   <body>
 
-    <md-content class="md-whiteframe-12dp md-padding md-hue-4" style="width : 60%; margin: auto;">
+    <md-content class="md-whiteframe-12dp md-padding md-hue-4" style="width : 60%; margin: auto;" ng-controller="register-controller">
       <md-toolbar layout-align="center center">
         <h1>Create Your New Account!</h1>
       </md-toolbar>
@@ -29,31 +32,31 @@
           <!-- <p class="md-label">First Name: </p> -->
           <md-input-container class="md-icon-float md-block">
             <label for="firstname">First Name: </label>
-            <input type="text" name="firstname" id="firstname" required/>
+            <input type="text" ng-model="user.firstname" id="firstname" required/>
           </md-input-container>
-
-
 
         <!-- <p class="md-label">Last Name: </p> -->
         <md-input-container class="md-icon-float md-block">
           <label for="lastname">Last Name:</label>
-          <input type="text" name="lastname" id="lastname" required/>
+          <input type="text" ng-model="user.lastname" id="lastname" required/>
         </md-input-container>
 
         <!-- <p class="md-label" for="username">Email:</p> -->
-        <md-input-container class="md-icon-float md-block">
+        <md-input-container class="md-icon-float md-block {{invalid}}">
           <label for="username">Email: </label>
-          <input type="text" name="username" id="username" required/>
+          <input type="text" ng-model="user.username" id="username" ng-blur="validateEmail(user.username)" required/>
         </md-input-container>
 
         <!-- <p class="md-label" for="password">Password:</p> -->
         <md-input-container class="md-icon-float md-block">
           <label for="password">Password: </label>
-          <input type="password" name="password" id="password" required/>
+          <input type="password" ng-model="user.password" id="password" required/>
         </md-input-container>
-
+        <p style="margin: 0 0 10px 0; text-align:center;">
+          {{status}}
+        </p>
         <div layout-gt-xs="row" layout-align="center center">
-          <md-button class="md-raised md-primary" type="submit">Register</md-button>
+          <md-button class="md-raised md-primary" ng-click="register()">Register</md-button>
 
           <md-button class="md-flat md-button" href="/">Back to Login</md-button>
         </div>
