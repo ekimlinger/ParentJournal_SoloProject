@@ -26,6 +26,7 @@ var User = require("./models/user.js");
 var router = require("./modules/index.js");
 var register = require("./modules/register.js");
 var user = require("./modules/users.js");
+var mobile = require("./modules/mobile.js");
 
 
 app.use(session({
@@ -112,6 +113,7 @@ app.post("/login", passport.authenticate("local", {
     failureRedirect: "/assets/views/failed-login.html"
 }));
 
+app.use('/mobile', mobile);
 app.use('/register', register);
 app.use('/user', user);
 app.use('/', router);
