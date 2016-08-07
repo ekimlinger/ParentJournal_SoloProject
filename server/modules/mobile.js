@@ -36,24 +36,24 @@ router.post('/register', function(req,res,next){
   User.find({username: newUser.username},function(err,data){
     if (err) {
       console.log(err);
-      res.send(500);
+      res.sendStatus(500);
     } else{
-      console.log("Data from find: ", data);
+
       if(!data.length){
         // If there are no users that match the username create new user
         newUser.children = [];
         newUser.notifications = [true,true];
-        console.log("About to save: ", newUser);
+        
         User.create(newUser, function(err,post){
             if(err){
               next(err);
-              res.send(500);
+              res.sendStatus(500);
             } else {
-              res.send(200);
+              res.sendStatus(200);
             }
         });
       }else{
-        res.send(401);
+        res.sendStatus(401);
       }
     }
   });
@@ -62,7 +62,6 @@ router.post('/register', function(req,res,next){
 
 router.get("/name", function(req,res,next){
 
-    console.log("Logged in: ", req.isAuthenticated());
     if(req.isAuthenticated()){
       var resUser = {
           id: req.user.id,
@@ -75,7 +74,7 @@ router.get("/name", function(req,res,next){
       };
       res.json(resUser);
     } else{
-      res.send();
+      res.sendStatus(401);
     }
 });
 

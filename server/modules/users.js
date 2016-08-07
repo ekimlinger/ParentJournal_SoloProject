@@ -130,14 +130,12 @@ router.delete("/deleteChild/:childID",function(req,res,next){
     });
 
   } else{
-    console.log("Trying to delete entries but you're not logged in!");
-    res.send();
+    res.sendStatus(401);
   }
 
 });
 
 router.get("/name", function(req,res,next){
-    console.log("Logged in: ", req.isAuthenticated());
     if(req.isAuthenticated()){
       var resUser = {
           id: req.user.id,
@@ -152,7 +150,7 @@ router.get("/name", function(req,res,next){
       };
       res.json(resUser);
     } else{
-      res.send();
+      res.sendStatus(401);
     }
 });
 

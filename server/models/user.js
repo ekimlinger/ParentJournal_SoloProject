@@ -14,7 +14,6 @@ var UserSchema = new Schema({
 });
 
 UserSchema.pre("save", function(next){
-    console.log("Made it into Pre! Attempt to save: ", this);
     var user = this;
 
     //Only hash the password if it has been modified
@@ -25,7 +24,6 @@ UserSchema.pre("save", function(next){
         bcrypt.hash(user.password, salt, function(err, hash){
             if(err) return next(err);
             user.password = hash;
-            console.log("Did I hash? : " , user.password);
             next();
         });
     });
