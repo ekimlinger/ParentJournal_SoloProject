@@ -8,7 +8,6 @@ router.post('/login', passport.authenticate('local'),
   function(req, res) {
     // If this function gets called, authentication was successful.
     // `req.user` contains the authenticated user.
-    console.log("Reqest params: ", req.params);
     var resUser = {
         id: req.user.id,
         username: req.user.username,
@@ -59,9 +58,19 @@ router.post('/register', function(req,res,next){
 
 
 router.get("/name", function(req,res,next){
+
     console.log("Logged in: ", req.isAuthenticated());
     if(req.isAuthenticated()){
-
+      var resUser = {
+          id: req.user.id,
+          username: req.user.username,
+          firstname: req.user.firstname,
+          lastname: req.user.lastname,
+          children: req.user.children,
+          notifications: req.user.notifications,
+          datecreated: req.user.lastlogin
+      };
+      res.json(resUser);
     } else{
       res.send();
     }
