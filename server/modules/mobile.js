@@ -3,6 +3,8 @@ var router = express.Router();
 var passport = require('passport');
 var path = require('path');
 
+var User = require('../models/user.js');
+
 
 router.post('/login', passport.authenticate('local'),
   function(req, res) {
