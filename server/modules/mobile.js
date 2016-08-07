@@ -3,7 +3,7 @@ var router = express.Router();
 var passport = require('passport');
 var path = require('path');
 
-var User = require('../models/user.js');
+var User = require('../models/user');
 
 
 router.post('/login', passport.authenticate('local'),
@@ -23,12 +23,13 @@ router.post('/login', passport.authenticate('local'),
 });
 
 router.post('/register', function(req,res,next){
-  console.log(req.params);
+
+  console.log(req.body);
   var newUser = {
-    username: req.params.username,
-    firstname: req.params.firstname,
-    lastname: req.params.lastname,
-    password: req.params.password
+    username: req.body.username,
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+    password: req.body.password
   };
 
   // Check that username/email has not been taken yet
