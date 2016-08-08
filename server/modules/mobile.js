@@ -74,7 +74,7 @@ router.get("/name", function(req,res,next){
       };
       res.json(resUser);
     } else{
-      res.status(401.send());
+      res.status(401).send());
     }
 });
 
