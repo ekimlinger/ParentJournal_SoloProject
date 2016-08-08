@@ -36,24 +36,24 @@ router.post('/register', function(req,res,next){
   User.find({username: newUser.username},function(err,data){
     if (err) {
       console.log(err);
-      res.sendStatus(500);
+      res.status(500).send();
     } else{
 
       if(!data.length){
         // If there are no users that match the username create new user
         newUser.children = [];
         newUser.notifications = [true,true];
-        
+
         User.create(newUser, function(err,post){
             if(err){
               next(err);
-              res.sendStatus(500);
+              res.status(500).send();
             } else {
-              res.sendStatus(200);
+              res.status(200).send();
             }
         });
       }else{
-        res.sendStatus(401);
+        res.status(401).send();
       }
     }
   });
@@ -74,7 +74,7 @@ router.get("/name", function(req,res,next){
       };
       res.json(resUser);
     } else{
-      res.sendStatus(401);
+      res.status(401.send());
     }
 });
 
