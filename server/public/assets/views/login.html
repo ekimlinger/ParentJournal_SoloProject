@@ -18,8 +18,25 @@
   </head>
   <body>
 
-      <md-content class="md-whiteframe-12dp md-hue-4 myContent" layout-padding >
+    <header>
+      <h1>Parent Journal</h1>
 
+      <form class="login-form" action="/login" method="post">
+
+        <label for="username">Email Address: </label>
+        <label for="password">Password: </label>
+        <br />
+        <input type="text" name="username" id="username" />
+        <input type="password" name="password" id="password" />
+        
+        <button type="submit">Sign In</button>
+        <br />
+        <a class="forgot-password" href="/forgot-password">Forgot Password?</a>
+      </form>
+    </header>
+
+    <!--
+      <md-content class="md-whiteframe-12dp md-hue-4 myContent" layout-padding >
 
         <md-toolbar layout-align="center center">
           <h1 >Parent Journal</h1>
@@ -29,13 +46,11 @@
         <form action="/login" method="post">
 
 
-            <!-- <p class="md-label">Email: </p> -->
             <md-input-container class="md-block ngInput" flex-gt-xs>
               <label for="username">Email Address: </label>
               <input type="text" name="username" id="username" />
             </md-input-container>
 
-            <!-- <p class="md-label">Password: </p> -->
             <md-input-container class="md-block ngInput" flex-gt-xs>
               <label for="password">Password: </label>
               <input type="password" name="password" id="password" />
@@ -46,7 +61,7 @@
           <md-button class="md-raised md-warn"  href="/register">Create an Account!</md-button>
           </div>
         </form>
-        </md-content>
+        </md-content> -->
 
 
   </body>
