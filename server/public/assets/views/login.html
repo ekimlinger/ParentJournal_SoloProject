@@ -14,6 +14,7 @@
        <script type="text/javascript" src="/assets/vendors/angular-route/angular-route.min.js"></script>
     <!-- MYSCRIPTS -->
     <script type="text/javascript" src="/assets/scripts/app.js"></script>
+    <script type="text/javascript" src="/assets/scripts/controllers/register-controller.js"></script>
     <link rel="stylesheet" href="/assets/styles/loginStyles.css"  />
   </head>
   <body>
@@ -28,12 +29,48 @@
         <br />
         <input type="text" name="username" id="username" />
         <input type="password" name="password" id="password" />
-        
+
         <button type="submit">Sign In</button>
         <br />
         <a class="forgot-password" href="/forgot-password">Forgot Password?</a>
       </form>
     </header>
+
+    <section class="sign-up">
+      <div class="pj-info">
+        <h2>Welcome!</h2>
+        <p>
+          Parent Journal helps you celebrate all the great times that you have with your children. By helping you keep fun and easy to use journal entries. Simply save new entries on the go, to remember all the monumental things your children have accomplish
+        </p>
+      </div>
+
+      <div class="sign-up-form">
+        <h2>Sign Up</h2>
+
+        <input type="text" placeholder="First Name" ng-model="user.firstname" id="firstname" required/>
+
+        <input type="text" placeholder="Last Name" ng-model="user.lastname" id="lastname" required/>
+
+        <input type="text" placeholder="Email" ng-model="user.username" id="username" ng-blur="validateEmail(user.username)" required/>
+
+        <input type="password" placeholder="Password" ng-model="user.password" id="password" required/>
+
+
+        <br />
+        <md-button class="md-raised md-primary" ng-click="register()">Register</md-button>
+        <p class="sign-up-status">
+          {{status}}
+        </p>
+      </div>
+
+    </section>
+
+
+    <footer>
+      <p>
+        &copy; Parent Journal 2016. All rights reserved.
+      </p>
+    </footer>
 
     <!--
       <md-content class="md-whiteframe-12dp md-hue-4 myContent" layout-padding >

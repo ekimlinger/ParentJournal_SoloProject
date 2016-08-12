@@ -1,5 +1,16 @@
+/*
+Color Pallet:
+#85DB18
+#CDE855
+#493F0B
+#F5F6D4
+#A75B20
+rgb(253,116,0)
+
+*/
+
 body{
-  min-width: 850px;
+  min-width: 860px;
 }
 
 header{
@@ -8,7 +19,7 @@ header{
   background: -webkit-linear-gradient(#00E83A, #009626); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(#00E83A, #009626); /* For Opera 11.1 to 12.0 */
   background: -moz-linear-gradient(#00E83A, #009626); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#00E83A, #009626); /* Standard syntax */
+  background: linear-gradient(#85DB18, #009626); /* Standard syntax */
 }
 header h1{
   display: inline-block;
@@ -51,39 +62,40 @@ header h1{
   height: 25px;
   width: 60px;
 }
+.sign-up{
+  min-width: 860px;
+  min-height: 385px;
+  background: white;
+}
+.pj-info{
+  display: inline-block;
+  margin: 20px 20px 60px 30px;
+  width: 400px;
+  background: linear-gradient(rgba(240,240,240,.9),rgba(240,240,240,.7));
+  border-radius: 8px;
+  padding: 20px;
+}
+.sign-up-form{
+  display: inline-block;
+  float: right;
+  width: 300px;
+  background: linear-gradient(rgba(240,240,240,.9),rgba(240,240,240,.7));
+  border-radius: 8px;
+  padding:  0 20px;
+  margin: 20px 30px 10px 0px;
+}
+.sign-up-form input{
+  margin-bottom: 5px;
+  height: 30px;
+  width: 295px;
+  border: none;
+  border-radius: 3px;
+  padding-left: 5px;
+  margin: 0 auto 20px auto;
+}
 
-
-/* OLD */
-
-/*body{
-  background: url('/assets/images/PlaygroundBench.jpg');
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 5%;
-
+footer{
+  background: lightgray;
+  padding: 10px 20px;
+  margin-top: 20px;
 }
-h1{
-  font-size: 30px;
-  font-weight: bolder;
-  margin: 10px auto;
-}
-h3{
-  font-size: 20px;
-  font-weight: 300;
-  margin: 10px auto;
-}
-.ngInput, p{
-  margin-bottom: 0px;
-  color: white;
-}
-md-content{
-  max-width : 500px;
-  margin: auto;
-}
-label{
-  color: white;
-}
-md-input-container.md-default-theme label, md-input-container label, md-input-container.md-default-theme .md-placeholder, md-input-container .md-placeholder{
-  color: white;
-}*/
