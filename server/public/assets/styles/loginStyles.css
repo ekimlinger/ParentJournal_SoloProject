@@ -65,7 +65,8 @@ header h1{
 .sign-up{
   min-width: 860px;
   min-height: 385px;
-  background: white;
+  background: url("/assets/images/family.jpg");
+  background-size: cover;
 }
 .pj-info{
   display: inline-block;
@@ -93,7 +94,14 @@ header h1{
   padding-left: 5px;
   margin: 0 auto 20px auto;
 }
-
+.about {
+  padding: 10px 30px;
+  background: #00D134; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(#00E83A, #009626); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#00E83A, #009626); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#00E83A, #009626); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#A75B20, #F5F6D4); /* Standard syntax */
+}
 footer{
   background: lightgray;
   padding: 10px 20px;
