@@ -27,6 +27,9 @@ header h1{
   color: white;
   text-shadow: black 1px 1px;
 }
+header sup{
+  font-size: 50%;
+}
 .login-form{
   float: right;
   width: 425px;
