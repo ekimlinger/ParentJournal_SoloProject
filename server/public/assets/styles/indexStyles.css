@@ -35,6 +35,13 @@ section .box{
   background: white;
   padding: 20px;
 }
+.settings-view{
+  width : 90%;
+  max-width: 650px;
+  margin: 10px auto 50px auto;
+  background: white;
+  padding: 20px;
+}
 
 /* OLD */
 h2 sup{
