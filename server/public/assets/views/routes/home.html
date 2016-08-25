@@ -1,7 +1,7 @@
-<md-content layout-padding>
-  <div style="max-width : 600px; margin: 10px auto 50px auto;">
+<!-- <md-content layout-padding> -->
+  <section style="max-width : 600px; margin: 10px auto 50px auto;">
 
-      <div ng-if="randomPhrase.data" class="md-whiteframe-12dp fade" layout-xs="row" style="text-align: center;" layout-padding layout-align="center center">
+      <div ng-if="randomPhrase.data" class="box md-whiteframe-12dp fade" layout-xs="row" style="text-align: center;" layout-padding layout-align="center center">
         <h2>"{{randomPhrase.data.phrases[0] }}" - {{randomPhrase.data.child}}&nbsp;&nbsp;{{randomPhrase.data.date | date}}</h2>
       </div>
       <!-- OR -->
@@ -16,7 +16,7 @@
 
     <div layout-gt-sm="row">
 
-      <div ng-if="randomJournal.data" class="md-whiteframe-12dp fade" layout="column" layout-padding layout-align="center center">
+      <div ng-if="randomJournal.data" class="box md-whiteframe-12dp fade" layout="column" layout-padding layout-align="center center">
         <p>"{{randomJournal.data.journal}}"</p>
         <p>
           <strong>{{randomJournal.data.child}}</strong> -- {{randomJournal.data.date | date}}
@@ -24,5 +24,5 @@
       </div>
 
     </div>
-  </div>
-</md-content>
+  </section>
+<!-- </md-content> -->

@@ -1,3 +1,42 @@
+main{
+  background: #ddd;
+  min-height: 100%;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  bottom: 0;
+
+  overflow: scroll;
+}
+header{
+  height: 60px;
+  background: #00D134; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(#85DB18, #009626); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#85DB18, #009626); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#85DB18, #009626); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#85DB18, #009626); /* Standard syntax */
+  color: white;
+}
+header h2{
+  color: white;
+  text-shadow: black 1px 1px;
+}
+header .md-button{
+  color: white;
+  border-color: white;
+}
+section .box{
+  background: white;
+  margin-bottom: 20px;
+}
+.add-view{
+  width : 90%;
+  max-width: 800px;
+  margin: 10px auto 50px auto;
+  background: white;
+  padding: 20px;
+}
+
+/* OLD */
 h2 sup{
   font-size: 50%;
 }
@@ -10,13 +49,13 @@ h2 sup{
 .myNav{
   position: fixed;
   z-index: 10000000;
-  margin-top: 69px;
+  margin-top: 60px;
 }
 .md-sidenav-backdrop{
   position: fixed;
 }
 main{
-  padding-top: 70px;
+  padding-top: 60px;
 }
 md-toast{
   position: fixed;
@@ -46,7 +85,7 @@ md-input-container.md-default-theme label, md-input-container label, md-input-co
   color: white;
 }
 h3{
-  color: white;
+  color: black;
 }
 md-chips{
   width: 70%;
