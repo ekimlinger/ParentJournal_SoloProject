@@ -1,19 +1,15 @@
-<md-content layout-padding>
+<!-- <md-content layout-padding> -->
 
-  <div>
-    <div class="md-whiteframe-12dp " layout-gt-xs="row" layout-align="center center">
+  <section class="date-view md-whiteframe-12dp" layout-gt-xs="row" layout-align="center center">
 
-      <h2>Viewing all entries for:
-      </h2>
-      <md-datepicker class="md-hue-4" ng-model="date" md-placeholder="Enter date"></md-datepicker>
+    <h2>Viewing all entries for:
+    </h2>
+    <md-datepicker class="md-hue-4" ng-model="date" md-placeholder="Enter date"></md-datepicker>
 
-    </div>
+  </section>
 
-  </div>
-
-  <div style="width : 75%; margin: 0px auto 20px auto;">
-    <div layout-align="center">
-      <md-card ng-if="entries.response" class="md-whiteframe-12dp" style="margin: 25px auto;" ng-repeat="entry in entries.response">
+    <!-- <div layout-align="center"> -->
+      <md-card ng-if="entries.response" class="date-view md-whiteframe-12dp" ng-repeat="entry in entries.response">
         <md-toolbar>
           <md-card-title>
             <md-card-title-text>
@@ -58,7 +54,8 @@
           <md-button class="md-raised md-warn" ng-click="deleteEntries(entry)">Delete</md-button>
         </md-card-actions>
       </md-card>
-      <md-card ng-if="!entries.response[0]">
+
+      <md-card ng-if="!entries.response[0]" class="date-view md-whiteframe-12dp">
         <md-toolbar>
           <md-card-title>
             <md-card-title-text>
@@ -71,6 +68,6 @@
           <md-button class="md-raised" ng-click="editEntries({date: date, phrases:[], things:[], accomplishments: []})">Click Here to add one!</md-button>
         </md-content
       </md-card>
-    </div>
-  </div>
-</md-content>
+    <!-- </div> -->
+  </section>
+<!-- </md-content> -->
