@@ -59,6 +59,7 @@ myApp.factory("JournalService", ["$http",'$window','$filter', function($http, $w
       page.userID = currentUser.data.id;
       console.log("page.date = ", page.date);
       page.date = $filter('date')(page.date, 'yyyy-MM-dd');
+      console.log("date saving factory: ", page.date);
       if(page._id){
         $http.put("/entries/" + page._id, page).then(function(response){
           console.log("You have just created a new entry!");
