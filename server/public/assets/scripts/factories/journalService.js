@@ -10,11 +10,11 @@ myApp.factory("JournalService", ["$http",'$window','$filter', function($http, $w
 
     var getName = function(){
       $http.get("/user/name").then(function(response){
-        console.log("Logged in as: ", response.data);
+        console.log("Logged in as: ", response);
         currentUser.data = response.data;
-        if(!currentUser.data){
-          $window.location.href = '/';
-        }
+      },function(response){
+        //User is not logged in, redirecting to home
+        $window.location.href = '/';
       });
     };
 
