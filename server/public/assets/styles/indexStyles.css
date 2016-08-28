@@ -48,6 +48,16 @@ section .box{
   margin: 10px auto 20px auto;
   background: white;
 }
+.full-width{
+  width: 600px;
+}
+section.home{
+  max-width: 600px;
+  margin: 10px auto 50px auto;
+}
+.quote{
+  width: 584px;
+}
 /* OLD */
 h2 sup{
   font-size: 50%;
