@@ -8,10 +8,17 @@ myApp.controller("ViewController", ["$scope","$filter", "$mdToast", "$mdDialog",
   $scope.$watch("date", function(date){
     JournalService.getEntries(date);
 
-      $scope.entries = JournalService.entries;
+    $scope.entries = JournalService.entries;
 
-    refEntries = JournalService.entries;
   });
+
+  //Change move to previous date
+  $scope.previousDate = function(){
+    $scope.date = new Date(moment($scope.date).subtract(1,'days'));
+  }
+  $scope.nextDate = function(){
+    $scope.date = new Date(moment($scope.date).add(1,'days'));
+  }
 
   // See factory
   $scope.deleteEntries = JournalService.deleteEntries;

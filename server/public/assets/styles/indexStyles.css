@@ -1,6 +1,6 @@
 main{
   background: #ddd;
-  min-height: 100%;
+  height: 95%;
   margin-bottom: 0px;
   padding-bottom: 0px;
   bottom: 0;
@@ -42,14 +42,26 @@ section .box{
   background: white;
   padding: 20px;
 }
+
 .date-view{
-  width : 90%;
+  width : 98%;
+  display: inline-flex;
+  min-width: 500px;
   max-width: 750px;
-  margin: 10px auto 20px auto;
+  margin: 10px 10px 20px 10px;
   background: white;
+}
+.wrapper-date-view{
+  width : 90%;
+  max-width: 770px;
+  margin: 0 auto;
 }
 .full-width{
   width: 600px;
+}
+.full-height{
+  height:auto;
+  min-height: 100%;
 }
 section.home{
   max-width: 600px;
@@ -58,6 +70,43 @@ section.home{
 .quote{
   width: 584px;
 }
+.left-arrow{
+  height: auto;
+  min-width: 40px;
+  width: 25%;
+  display: inline-block;
+  background: none; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left, white, rgba(255, 255, 255, 0.0)); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(left, white, rgba(255, 255, 255, 0.0)); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(left, white, rgba(255, 255, 255, 0.0)); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(left, white, rgba(255, 255, 255, 0.0)); /* Standard syntax */
+  margin: 10px;
+  text-align: center;
+  outline:0;
+}
+.right-arrow{
+  min-height: auto;
+  min-width: 40px;
+  width: 25%;
+  display: inline-block;
+  background: none; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(right, white, rgba(255, 255, 255, 0.0)); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, white, rgba(255, 255, 255, 0.0)); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, white, rgba(255, 255, 255, 0.0)); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(right, white, rgba(255, 255, 255, 0.0)); /* Standard syntax */
+  margin: 10px;
+  text-align: center;
+  padding: auto 0;
+  outline:0;
+}
+.right-arrow p, .left-arrow p{
+  color: darkgray;
+  height: auto;
+  margin-top: 100%;
+
+}
+
+
 /* OLD */
 h2 sup{
   font-size: 50%;

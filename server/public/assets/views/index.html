@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html ng-app="myApp">
 
-  <head>
+<head>
     <meta charset="utf-8">
     <title>Parent Journal</title>
 
     <!-- STYLES -->
-       <link rel="stylesheet" href="/assets/vendors/angular-material/angular-material.min.css">
-       <!-- SCRIPTS -->
+    <link rel="stylesheet" href="/assets/vendors/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="/assets/vendors/font-awesome/css/font-awesome.css">
+    <!-- SCRIPTS -->
 
-       <script type="text/javascript" src="/assets/vendors/angular/angular.min.js"></script>
-       <script type="text/javascript" src="/assets/vendors/angular-animate/angular-animate.min.js"></script>
-       <script type="text/javascript" src="/assets/vendors/angular-messages/angular-messages.min.js"></script>
-       <script type="text/javascript" src="/assets/vendors/angular-aria/angular-aria.min.js"></script>
-       <script type="text/javascript" src="/assets/vendors/angular-material/angular-material.min.js"></script>
-       <script type="text/javascript" src="/assets/vendors/angular-route/angular-route.min.js"></script>
+    <script type="text/javascript" src="/assets/vendors/angular/angular.min.js"></script>
+    <script type="text/javascript" src="/assets/vendors/angular-animate/angular-animate.min.js"></script>
+    <script type="text/javascript" src="/assets/vendors/angular-messages/angular-messages.min.js"></script>
+    <script type="text/javascript" src="/assets/vendors/angular-aria/angular-aria.min.js"></script>
+    <script type="text/javascript" src="/assets/vendors/angular-material/angular-material.min.js"></script>
+    <script type="text/javascript" src="/assets/vendors/angular-route/angular-route.min.js"></script>
+
+    <script type="text/javascript" src="/assets/vendors/moment.min.js"></script>
 
     <!-- MYSCRIPTS -->
     <script type="text/javascript" src="/assets/scripts/app.js"></script>
@@ -27,14 +30,15 @@
 
     <link rel="stylesheet" type="text/css" href="/assets/styles/indexStyles.css" />
 
-  </head>
+</head>
 
 
-  <body class="md-primary" ng-cloak>
+<body class="md-primary" ng-cloak>
     <ng-include class="myHeader" ng-controller="LeftCtrl" src="'/assets/views/partials/header.html'"></ng-include>
     <ng-include ng-controller="LeftCtrl" src="'/assets/views/partials/nav.html'"></ng-include>
 
-      <main ng-view ng-cloak ></main>
+    <main ng-view ng-cloak></main>
     <ng-include src="'/assets/views/partials/footer.html'"></ng-include>
-  </body>
+</body>
+
 </html>
