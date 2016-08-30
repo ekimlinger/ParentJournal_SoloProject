@@ -67,7 +67,6 @@ myApp.controller("ViewController", ["$scope","$filter", "$mdToast", "$mdDialog",
     currentEntry.things = entry.things;
     currentEntry.child = entry.child;
     currentEntry.date = $scope.date;
-    console.log(currentEntry.date);
 
     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
     $mdDialog.show({

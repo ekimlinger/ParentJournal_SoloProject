@@ -31,7 +31,7 @@ section .box{
 .add-view{
   width : 90%;
   max-width: 800px;
-  margin: 10px auto 50px auto;
+  margin: 10px auto 80px auto;
   background: white;
   padding: 20px;
 }
@@ -55,6 +55,7 @@ section .box{
   width : 90%;
   max-width: 770px;
   margin: 0 auto;
+  padding-bottom: 50px;
 }
 .full-width{
   width: 600px;
@@ -130,10 +131,15 @@ main{
 }
 md-toast{
   position: fixed;
+  bottom: 0px;
+  left: 25%;
   width: 50%;
   z-index: 10000;
-  margin: 0 auto;
   text-align: center;
+}
+md-toast.md-default-theme .md-toast-content, md-toast .md-toast-content{
+  background: white;
+  color: black;
 }
 
 .fade.ng-hide {
