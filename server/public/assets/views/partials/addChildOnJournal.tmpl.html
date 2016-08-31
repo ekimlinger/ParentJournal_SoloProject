@@ -1,0 +1,47 @@
+<md-dialog aria-label="Add Child" style="width : 50%;" ng-cloak>
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2><b>Add a Child</b></h2>
+        <span flex></span>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <p>It looks like you haven't added any children yet! Please add one below or go to your settings!</p>
+        <form>
+          <div layout-gt-xs="row" layout="column">
+            <md-input-container class="md-block" flex-gt-xs>
+              <label class="md-label">First Name:  </label>
+              <input ng-model="child.firstname" type="text" name="firstname" md-maxlength="100" md-select-on-focus required></input>
+            </md-input-container>
+          </div>
+          <div layout-gt-xs="row" layout="column">
+            <md-input-container class="md-block" flex-gt-xs>
+              <label class="md-label">Last Name:  </label>
+              <input ng-model="child.lastname" type="text" name="lastname" md-maxlength="100" md-select-on-focus required></input>
+            </md-input-container>
+          </div>
+
+          <div layout-gt-xs="row" layout="column">
+            <md-content layout-align="center center" layout-margin layout padding>
+              <md-datepicker ng-model="child.dob" md-placeholder="Date of Birth" required></md-datepicker>
+          </div>
+        </form>
+
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <md-button class="md-raised md-primary" ng-click="addChild(child)" md-autofocus>
+        Add
+      </md-button>
+      <span flex></span>
+      <p>{{changeStatus}}</p>
+      <span flex></span>
+      <md-button class="md-raised md-warn" href="#settings" ng-click="hide()">
+       Settings Page
+      </md-button>
+
+    </md-dialog-actions>
+  </form>
+</md-dialog>
