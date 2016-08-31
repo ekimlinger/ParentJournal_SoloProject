@@ -153,7 +153,7 @@ myApp.controller("SettingsController", ["$scope", "$filter", "$mdDialog", "$mdMe
           $mdDialog.show(confirm).then(function() {
             $scope.status = 'You have deleted your account, now logging out.';
 
-            //  setInterval(JournalService.deactivateAccount, 3000);
+            setInterval(JournalService.deactivateAccount, 3000);
 
           }, function() {
             $scope.status = '';
@@ -172,20 +172,22 @@ myApp.controller("SettingsController", ["$scope", "$filter", "$mdDialog", "$mdMe
 
           $scope.savePassword = function(password) {
 
-            if (password.new1 == password.new2) {
-              JournalService.changePassword(password)
+            if (password && password.old && password.new1 && password.new1 == password.new2) {
+              JournalService.changePassword(password);
+              $scope.changeStatus = "";   // Reset status text
               $mdDialog.hide();
             } else {
-              $scope.changeStatus = "Passwords Not Matched!"
+              $scope.changeStatus = "Passwords Invalid!";
             }
           };
 
           $scope.saveEmail = function(email) {
-            if (email.new1 == email.new2) {
+            if (email && email.new1 == email.new2) {
               JournalService.changeEmail(email);
+              $scope.changeStatus = "";   // Reset status text
               $mdDialog.hide(email);
             } else {
-              $scope.changeStatus = "Email Addresses Not Matched!"
+              $scope.changeStatus = "Email Addresses Invalid!";
             }
           };
 
@@ -195,8 +197,13 @@ myApp.controller("SettingsController", ["$scope", "$filter", "$mdDialog", "$mdMe
           };
 
           $scope.addChild = function(child) {
+            if(child && child.dob && child.firstname && child.lastname){
               JournalService.addChild(child);
+              $scope.changeStatus = "";   // Reset status text
               $mdDialog.hide(child);
+            } else{
+              $scope.changeStatus = "Please enter all info for child!";
+            }
           };
 
         }

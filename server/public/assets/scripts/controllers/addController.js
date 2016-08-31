@@ -86,7 +86,7 @@ myApp.controller("AddController", ["$scope", "$filter", "$mdToast", "$mdDialog",
         JournalService.addChild(child);
         $mdDialog.hide(child);
       } else{
-        $scope.changeStatus = "Please enter all info!"
+        $scope.changeStatus = "Please enter all info for child!";
       }
     };
 
