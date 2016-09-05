@@ -1,0 +1,15 @@
+{
+  "web":
+  {
+    "client_id":"821755882430-7mlhmfku4t0tdqs274oponm386cp87id.apps.googleusercontent.com",
+    "project_id":"parentjournal-142421","auth_uri":"https://accounts.google.com/o/oauth2/auth",
+    "token_uri":"https://accounts.google.com/o/oauth2/token",
+    "auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs",
+    "client_secret":"dWOx_KA4wx_z0GPNgJWWBhUU",
+    "javascript_origins":["http://parentjournal.herokuapp.com"],
+    "access_token": "ya29.Ci9UA_Kjj_lyZCCvpG75eh_2TGZEn1SKx2WCqcOcvWaPoumoDVcD46F7XCnVi4FYaw",
+    "token_type": "Bearer",
+    "expires_in": 3600,
+    "refresh_token": "1/kwVkhXFNVWgBC-BhMR6VLmK5YCghbCZUuTEfKyEHvW8"
+  }
+}
