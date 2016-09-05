@@ -18,7 +18,7 @@ var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         xoauth2: xoauth2.createXOAuth2Generator({
-            user: 'parentjournals@gmail.com',
+            user: 'parent.journals@gmail.com',
             clientId: pjAuth['client_id'],
             clientSecret: pjAuth['client_secret'],
             refreshToken: pjAuth['refresh_token'],
@@ -29,7 +29,7 @@ var transporter = nodemailer.createTransport({
 
 
 
-var emailString = '<body> <div class="allContents"> <h1>Daily Reminder!</h1> <div class="content"> <p> It looks like you haven\'t made any journal entries for today! <br><br>You can update your journal entries by logging in using the button below, and clicking the “Add” button on your homepage! <br><br>If you no longer wish to receive these emails, you can update your preferences by going to: <br><br>Home —&gt; Settings —&gt; Notifications </p></div><div="footer"> <button class="link"> <a href="http://parentjournal.herokuapp.com">Parent Journal</a> </button> </div> </div><style>body{font-family: Arial; color: white; margin: 0;}.allContents{background: #f5f6d4;}h1{background: #85DB18; background: linear-gradient(#85DB18, #009626); color: #white; font-size: 40px; text-align: center; padding: 25px; margin: 0;}.content{width: 80%; background-color: #ffffff; color: black; border-radius: 3px; box-shadow: 4px 4px black; margin: 20px auto; padding: 10px 30px;}.footer{background: #aaa; width: auto; text-align: center; padding: 20px auto;}.link{font-size: 30px; border: none; outline: none; padding: 5px 10px; border-radius: 3px; background: rgb(255,87,34); color: #ffffff;}.link a{color: black; text-decoration: none;}</style> </body>' ;
+var emailString = '<body> <div class="allContents"> <h1>Daily Reminder!</h1> <div class="content"> <p> It looks like you haven\'t made any journal entries for today! <br><br>You can update your journal entries by logging in using the button below, and clicking the “Add” button on your homepage! <br><br>If you no longer wish to receive these emails, you can update your preferences by going to: <br><br>Home —&gt; Settings —&gt; Notifications </p></div><div class="footer"> <button class="link"> <a href="http://parentjournal.herokuapp.com">Go to Parent Journal</a> </button> </div></div><style>body{font-family: Arial; color: white; margin: 0;}.allContents{background: #f5f6d4;}h1{background: #85DB18; background: linear-gradient(#85DB18, #009626); color: #white; font-size: 40px; text-shadow: black 1.5px 1.5px; text-align: center; padding: 25px; margin: 0;}.content{width: 80%; background-color: #ffffff; color: black; border-radius: 3px; box-shadow: 4px 4px black; margin: 20px auto; padding: 10px 30px;}.footer{background: #aaa; background: linear-gradient(#ddd, #aaa); width: auto; text-align: center; padding: 20px;}.link{font-size: 30px; border: none; box-shadow: black 2px 2px; outline: none; padding: 10px 20px; border-radius: 3px; background: rgb(255, 87, 34);}.link a{color: #ffffff; text-decoration: none;}</style></body>' ;
 
 
 // setup e-mail data with unicode symbols
@@ -38,7 +38,6 @@ var dailyEmail = function(username){
             from: '"Parent Journal 👥" <parentjournals@gmail.com>', // sender address
             to: username, // list of receivers
             subject: 'Daily Reminder! ✔', // Subject line
-            // text: 'Hello world 🐴', // plaintext body
             html: emailString // html body
           }
 };
