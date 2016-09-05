@@ -1,74 +1,80 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
 
-  </head>
-  <body>
+</head>
+
+<body>
     <div class="allContents">
-      <h1>Weekly Reminder!</h1>
-
-      <div class="content">
-        <p>
-          It looks like you haven't made any journal entries for this week!
-          <br>
-          <br>
-          You can update your journal entries by logging in using the button below, and clicking the “Add” button on your homepage!
-
-          <br>
-          <br>
-          If you no longer wish to receive these emails, you can update your preferences by going to:
-          <br>
-          <br>
-          Home —&gt; Settings —&gt; Notifications
-
-        </p>
-      </div>
-      <h1>
-        <button class="link">
-          <a href="http://localhost:3000">Parent Journal</a>
-        </button>
-      </h1>
+        <h1>Daily Reminder!</h1>
+        <div class="content">
+            <p> It looks like you haven\'t made any journal entries for today!
+                <br>
+                <br>You can update your journal entries by logging in using the button below, and clicking the “Add” button on your homepage!
+                <br>
+                <br>If you no longer wish to receive these emails, you can update your preferences by going to:
+                <br>
+                <br>Home —&gt; Settings —&gt; Notifications </p>
+        </div>
+        <div class="footer">
+            <button class="link"> <a href="http://parentjournal.herokuapp.com">Go to Parent Journal</a> </button>
+        </div>
     </div>
     <style>
-      body {
-        font-family: Arial;
-        color: white;
-        margin: 0;
-      }
-      .allContents {
-        background: #787878;
-      }
-      h1 {
-        background-color: #2E2E2E;
-        color: #ddd;
-        font-size: 40px;
-        text-align: center;
-        padding: 25px;
-        margin: 0;
-      }
-      .content {
-        width: 80%;
-        background-color: #444444;
-        border-radius: 3px;
-        box-shadow: 4px 4px black;
-        margin: 20px auto;
-        padding: 10px 30px;
-      }
-      .link {
-        font-size: 30px;
-        border: none;
-        outline: none;
-        padding: 5px 10px;
-        border-radius: 3px;
-        background: rgb(76,175,80);
-      }
-      .link a {
-        color: black;
-        text-decoration: none;
-      }
+        body {
+            font-family: Arial;
+            color: white;
+            margin: 0;
+        }
 
+        .allContents {
+            background: #f5f6d4;
+        }
+
+        h1 {
+            background: #85DB18;
+            background: linear-gradient(#85DB18, #009626);
+            color: #white;
+            font-size: 40px;
+            text-align: center;
+            padding: 25px;
+            margin: 0;
+        }
+
+        .content {
+            width: 80%;
+            background-color: #ffffff;
+            color: black;
+            border-radius: 3px;
+            box-shadow: 4px 4px black;
+            margin: 20px auto;
+            padding: 10px 30px;
+        }
+
+        .footer {
+            background: #aaa;
+            background: linear-gradient(#ddd, #aaa);
+            width: auto;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .link {
+            font-size: 30px;
+            border: none;
+            outline: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            background: rgb(255, 87, 34);
+        }
+
+        .link a {
+            color: #ffffff;
+            text-decoration: none;
+        }
     </style>
+</body>
 
-  </body>
 </html>

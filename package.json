@@ -39,6 +39,7 @@
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
-    "premailer-api": "^1.0.3"
+    "premailer-api": "^1.0.3",
+    "xoauth2": "^1.2.0"
   }
 }
