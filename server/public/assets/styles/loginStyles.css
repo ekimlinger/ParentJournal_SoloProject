@@ -32,7 +32,6 @@ header sup{
 }
 .login-form{
   float: right;
-  width: 425px;
   height: 65px;
   margin: 5px 10px 5px auto;
   display: inline-block;
@@ -82,6 +81,11 @@ header sup{
   display: inline-block;
   margin: 20px 20px 60px 30px;
   width: 400px;
+  background: rgba(240,240,240,.7); /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(rgba(240,240,240,.9), rgba(240,240,240,.7)); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(rgba(240,240,240,.9), rgba(240,240,240,.7)); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(rgba(240,240,240,.9), rgba(240,240,240,.7)); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(rgba(240,240,240,.9), rgba(240,240,240,.7)); /* Standard syntax */
   background: linear-gradient(rgba(240,240,240,.9),rgba(240,240,240,.7));
   border-radius: 8px;
   padding: 20px;
@@ -100,6 +104,11 @@ header sup{
   display: inline-block;
   float: right;
   width: 300px;
+  background: rgba(240,240,240,.7); /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(rgba(240,240,240,.9), rgba(240,240,240,.7)); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(rgba(240,240,240,.9), rgba(240,240,240,.7)); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(rgba(240,240,240,.9), rgba(240,240,240,.7)); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(rgba(240,240,240,.9), rgba(240,240,240,.7)); /* Standard syntax */
   background: linear-gradient(rgba(240,240,240,.9),rgba(240,240,240,.7));
   border-radius: 8px;
   padding:  0 20px;
