@@ -33,6 +33,7 @@
     "grunt-contrib-watch": "^1.0.0",
     "mocha": "^2.5.3",
     "moment": "^2.14.1",
+    "moment-timezone": "^0.5.5",
     "mongoose": "^4.4.11",
     "mongoose-schema-formatdate": "^1.0.0",
     "nodemailer": "^2.3.2",

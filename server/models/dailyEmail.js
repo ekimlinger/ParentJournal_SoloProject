@@ -74,12 +74,6 @@ function validateEmail(email) {
   return re.test(email);
 }
 
-transporter.sendMail(dailyEmail("ekimlinger@gmail.com"), function(error, info){
-  if(error){
-      return console.log(error);
-  } else{
-    console.log('Message sent: ' + info.response);
-  }
-});
+
 
 module.exports = sendDaily;

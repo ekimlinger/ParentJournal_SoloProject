@@ -8,6 +8,7 @@ var User = require("../models/user");
 
 
 var moment = require('moment');
+var moment = require('moment-timezone');
 
 var globalDaily = [];
 var globalWeekly = [];
@@ -108,7 +109,7 @@ setInterval(function(){
 
 //Checks if subscribed users have made entires daily
 setInterval(function(){
-    var date = new Date(); // Create a Date object to find out what time it is
+    var date = new Date(moment().tz('America/Chicago')); // Create a Date object to find out what time it is
     if(date.getHours() === 19 && date.getMinutes() === 59){ // Check the time
       checkDailyEntries();
       if(moment().weekday() == 7){
@@ -119,7 +120,7 @@ setInterval(function(){
 
 //
 setInterval(function(){ // Set interval for checking
-    var date = new Date(); // Create a Date object to find out what time it is
+    var date = new Date(moment().tz('America/Chicago')); // Create a Date object to find out what time it is
     if(date.getHours() === 20 && date.getMinutes() === 00){ // Check the time
       sendAllEmails();
     }
