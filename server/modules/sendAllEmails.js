@@ -17,6 +17,7 @@ var globalDailyInactive = [];
 var globalWeeklyInactive = [];
 
 var updateDailyEmailList = function(){
+  globalDaily = [];
   User.find({ "notifications.0" : true }, function(err,data){
     if(err){
       console.log(err);
@@ -30,6 +31,7 @@ var updateDailyEmailList = function(){
 }
 
 var updateWeeklyEmailList = function() {
+  globalWeekly = [];
   User.find({ "notifications.1" : true }, function(err,data){
     if(err){
       console.log(err);
