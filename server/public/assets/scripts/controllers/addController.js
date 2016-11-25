@@ -1,5 +1,7 @@
 myApp.controller("AddController", ["$scope", "$filter", "$mdToast", "$mdDialog", "$mdMedia", "JournalService", function($scope, $filter, $mdToast, $mdDialog, $mdMedia, JournalService){
 
+  $scope.images = [];
+
   //Function in case user has not entered child info
   $scope.addChild = function() {
     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
@@ -91,4 +93,32 @@ myApp.controller("AddController", ["$scope", "$filter", "$mdToast", "$mdDialog",
     };
 
   }
-}]);
+}])
+
+.directive('fileread',function(JournalService){
+  return {
+      restrict: 'A',
+      link: function(scope,elem, attrs){
+        elem.bind("change",function(changeEvent){
+          var reader = new FileReader();
+
+          reader.onloadend = function(loadEvent){
+            var fileread = loadEvent.target.result;
+            console.log(elem, elem['context']);
+            var tempArray = elem[0].value.split('\\');
+            var fileName = tempArray[tempArray.length - 1];
+
+            JournalService.storeImage(fileread, fileName)
+            .then(function(result){
+              scope.images.unshift(result.data);
+
+            })
+            .catch(function(err){
+              console.log(err);
+            });
+          };
+          reader.readAsDataURL(changeEvent.target.files[0]);
+        });
+      }
+  }
+});

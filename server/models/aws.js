@@ -1,5 +1,8 @@
 var AWS = require('aws-sdk');
-var Keys = require('../AwsKeys.json');
+var Keys = require('../../AwsKey.json');
+var moment = require('moment');
+
+console.log(moment().format());
 
 // Hard amazon aws config
 AWS.config.update({
@@ -15,12 +18,13 @@ var exports = module.exports = {};
 
 exports.saveImage = function (req, res) {
   var buf = new Buffer( req.body.imageBody.replace( /^data:image\/\w+;base64,/, ""), 'base64');
-
+  console.log(req.user);
   // bucketName var below crates a "folder" for each user
-  var bucketName = 'mailpants/' + req.body.userEmail;
+  var bucketName = 'parentjournal/' + req.user._id;
   var params = {
       Bucket: bucketName
-    , Key: req.body.imageName
+    , Key: moment().format()
+            + req.body.imageName
     , Body: buf
     , ContentType: 'image/' + req.body.imageExtension
     , ACL: 'public-read'

@@ -45,6 +45,7 @@ myApp.factory("JournalService", ["$http",'$window','$filter', function($http, $w
         randomJournal.data = response.data;
       });
     };
+
     var postEntries = function(page){
       // Attaches user to entry
       page.userID = currentUser.data.id;
@@ -52,6 +53,19 @@ myApp.factory("JournalService", ["$http",'$window','$filter', function($http, $w
       $http.post("/entries", page).then(function(response){
           console.log("You have just created a new entry!");
       });
+    };
+
+    var storeImage = function(imageData, fileName){
+      var imageExtension = imageData.split(';')[0].split('/');
+      imageExtension = imageExtension[imageExtension.length - 1];
+
+      var newImage = {
+        imageName: fileName,
+        imageBody: imageData,
+        imageExtension: imageExtension
+      };
+      console.log(newImage);
+      return $http.post('/entries/newimage', newImage)
     };
 
     var editEntries = function(page){
@@ -136,6 +150,7 @@ myApp.factory("JournalService", ["$http",'$window','$filter', function($http, $w
         currentUser : currentUser,
         getEntries : getEntries,
         postEntries : postEntries,
+        storeImage : storeImage,
         editEntries : editEntries,
         deleteEntries : deleteEntries,
         addChild : addChild,

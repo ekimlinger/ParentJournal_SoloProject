@@ -63,6 +63,15 @@
           <textarea ng-model="entry.notes" rows="3" md-maxlength="500" md-select-on-focus></textarea>
         </md-input-container>
 
+        <div class="md-block">
+          <h3 class="md-label">Upload Images</h3>
+          <input type="file" fileread accept="image/*" >
+        </div>
+
+        <div layout-gt-sm="row" ng-repeat="image in images">
+          <img ng-src="{{image.Location}}" style="height: 100px;">
+        </div>
+
         <div layout-gt-xs="row" layout="column" layout-align="center center">
 
           <md-button class="md-raised md-primary" type="submit" class="md-block" ng-click="submit(entry)">Submit</md-button>

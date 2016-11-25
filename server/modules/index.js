@@ -3,7 +3,7 @@ var router = express.Router();
 var passport = require('passport');
 var path = require('path');
 var Entry = require('../models/entries.js');
-
+var Images = require('../models/aws.js');
 
 function randomNumber(min,max){
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -129,6 +129,13 @@ router.delete("/entries/:entryID", function(req, res, next) {
   }
 
 });
+
+
+router.post("/entries/newimage/", Images.saveImage);
+
+// router.get("/entries/getimage/", Images.getImage);
+
+router.delete("entries/deleteimage/", Images.deleteImage);
 
 
 router.get("/logout", function(req, res) {

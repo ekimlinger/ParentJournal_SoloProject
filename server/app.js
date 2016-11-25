@@ -1,6 +1,7 @@
 var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
+var cors = require('cors');
 
 //PASSPORT
 var cookieParser = require("cookie-parser");
@@ -13,7 +14,8 @@ var mongoose = require("mongoose");
 var mongoURI =
     process.env.MONGODB_URI ||
     process.env.MONGOHQ_URL ||
-    'mongodb://127.0.0.1:27017/parent_journal';
+    // 'mongodb://127.0.0.1:27017/parent_journal' ||
+    'mongodb://heroku_6kldsp05:lfkfhr248c2uuuds2dnsprqp6s@ds013951.mlab.com:13951/heroku_6kldsp05';
 
 var MongoDB = mongoose.connect(mongoURI).connection;
 
@@ -43,10 +45,16 @@ app.use(session({
 
 
 app.use(cookieParser());
-app.use(bodyParser.json());
+
+app.use(express.static(__dirname + '/'));
+app.use(cors());
+
+app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({
+    limit: '50mb',
     extended: true
 }));
+
 app.use(passport.initialize());
 app.use(passport.session());
 
