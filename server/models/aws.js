@@ -1,8 +1,8 @@
 var AWS = require('aws-sdk');
 var Keys = require('../../AwsKey.json');
 var moment = require('moment');
+var Image = require('./images.js');
 
-console.log(moment().format());
 
 // Hard amazon aws config
 AWS.config.update({
@@ -34,10 +34,50 @@ exports.saveImage = function (req, res) {
     console.log(err, data);
     if (err) return res.status(500).send(err);
 
-    // TODO: save data to mongo
+    // Save image to mongo
+    var image = new Image({
+      fileName: params.Key,
+      fileType: params.ContentType,
+      bucketName: params.Bucket,
+      userID: req.user._id,
+      dateAdded: moment().format()
+    });
+
+
+    image.save(function(err, image) {
+      if (err) {
+        console.log(err);
+      }
+      // Send image data back
+      data.fileName = image.fileName;
+      data.fileType = image.fileType;
+      data.bucketName = image.bucketName;
+      data.userID = image.userID;
+      data.dateAdded = image.dateAdded;
+
+      // Save image name to database
+      console.log(data);
+
+      res.json(data);
+    });
+
+  });
+};
+
+exports.getImage = function (req,res){
+  var bucketName = 'parentjournal/' + req.user._id;
+
+  var params = {
+    Bucket: bucketName,
+    Key: req.body.imageName
+  };
+
+  s3.getObject(params, function(req,res){
+    if (err) return res.status(500).send(err);
+
     res.json(data);
   });
-}
+};
 
 exports.deleteImage = function (req, res) {
 	var imgName = req.body.image.Location.split('/');
@@ -66,4 +106,4 @@ exports.deleteImage = function (req, res) {
 	  	})
 	  })
 	});
-}
+};

@@ -131,12 +131,19 @@ router.delete("/entries/:entryID", function(req, res, next) {
 });
 
 
+
+/****************** IMAGES ***************************/
+
 router.post("/entries/newimage/", Images.saveImage);
 
-// router.get("/entries/getimage/", Images.getImage);
+router.get("/entries/getimage/", Images.getImage);
 
 router.delete("entries/deleteimage/", Images.deleteImage);
 
+
+
+
+/*************** USERS/WILDCARD **********************/
 
 router.get("/logout", function(req, res) {
   req.logout();
