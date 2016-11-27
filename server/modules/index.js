@@ -19,6 +19,7 @@ router.post("/entries", function(req, res, next) {
     things: req.body.things,
     journal: req.body.journal,
     notes: req.body.notes,
+    images: req.body.images,
     accomplishments: req.body.accomplishments,
     date: req.body.date
   });

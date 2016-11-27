@@ -1,7 +1,5 @@
 myApp.controller("AddController", ["$scope", "$filter", "$mdToast", "$mdDialog", "$mdMedia", "JournalService", function($scope, $filter, $mdToast, $mdDialog, $mdMedia, JournalService){
 
-  $scope.images = [];
-
   //Function in case user has not entered child info
   $scope.addChild = function() {
     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
@@ -27,13 +25,14 @@ myApp.controller("AddController", ["$scope", "$filter", "$mdToast", "$mdDialog",
   };
 
   // Declares/ clears entry form
-  console.log(JournalService.currentUser.data);
+  // console.log(JournalService.currentUser.data);
   $scope.user = JournalService.currentUser.data;
   $scope.entry = {};
   $scope.entry.phrases = [];
   $scope.entry.things = [];
   $scope.entry.rating = 3;
   $scope.entry.accomplishments = [];
+  $scope.entry.images = [];
 
   $scope.$watch("user.children", function(user){
     // If the user has children entered default to first child
@@ -98,20 +97,18 @@ myApp.controller("AddController", ["$scope", "$filter", "$mdToast", "$mdDialog",
 .directive('fileread',function(JournalService){
   return {
       restrict: 'A',
-      link: function(scope,elem, attrs){
+      link: function($scope,elem, attrs){
         elem.bind("change",function(changeEvent){
           var reader = new FileReader();
 
           reader.onloadend = function(loadEvent){
             var fileread = loadEvent.target.result;
-            console.log(elem, elem['context']);
             var tempArray = elem[0].value.split('\\');
             var fileName = tempArray[tempArray.length - 1];
 
             JournalService.storeImage(fileread, fileName)
             .then(function(result){
-              scope.images.unshift(result.data);
-
+              $scope.entry.images.unshift(result.data);
             })
             .catch(function(err){
               console.log(err);
