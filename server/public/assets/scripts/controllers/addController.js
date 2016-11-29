@@ -25,7 +25,6 @@ myApp.controller("AddController", ["$scope", "$filter", "$mdToast", "$mdDialog",
   };
 
   // Declares/ clears entry form
-  // console.log(JournalService.currentUser.data);
   $scope.user = JournalService.currentUser.data;
   $scope.entry = {};
   $scope.entry.phrases = [];
@@ -33,6 +32,10 @@ myApp.controller("AddController", ["$scope", "$filter", "$mdToast", "$mdDialog",
   $scope.entry.rating = 3;
   $scope.entry.accomplishments = [];
   $scope.entry.images = [];
+
+  // Temporary storage for images loaded
+  $scope.images = [];
+
 
   $scope.$watch("user.children", function(user){
     // If the user has children entered default to first child
@@ -108,7 +111,8 @@ myApp.controller("AddController", ["$scope", "$filter", "$mdToast", "$mdDialog",
 
             JournalService.storeImage(fileread, fileName)
             .then(function(result){
-              $scope.entry.images.unshift(result.data);
+              // If the image saved successfully to aws, store id in db
+              $scope.images.unshift(result.data);
             })
             .catch(function(err){
               console.log(err);

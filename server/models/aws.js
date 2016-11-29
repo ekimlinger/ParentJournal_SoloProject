@@ -31,14 +31,14 @@ exports.saveImage = function (req, res) {
   };
 
   s3.upload(params, function (err, data) {
-    console.log(err, data);
     if (err) return res.status(500).send(err);
-
+    console.log("Data returned from s3: ", data);
     // Save image to mongo
     var image = new Image({
-      fileName: params.Key,
-      fileType: params.ContentType,
-      bucketName: params.Bucket,
+      Key: params.Key,
+      ContentType: params.ContentType,
+      Bucket: params.Bucket,
+      Location: data.Location,
       userID: req.user._id,
       dateAdded: moment().format()
     });
@@ -48,17 +48,14 @@ exports.saveImage = function (req, res) {
       if (err) {
         console.log(err);
       }
-      // Send image data back
-      data.fileName = image.fileName;
-      data.fileType = image.fileType;
-      data.bucketName = image.bucketName;
-      data.userID = image.userID;
-      data.dateAdded = image.dateAdded;
 
-      // Save image name to database
-      console.log(data);
+      console.log(image);
+      res.json({
+        Location: image.Location,
+        Key: image.Key,
+        _id: image._id,
+      });
 
-      res.json(data);
     });
 
   });

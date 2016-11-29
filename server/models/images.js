@@ -3,11 +3,12 @@ var Schema = mongoose.Schema;
 
 
 var Image = new Schema({
-    fileType: {type: Array, required: true},
-    fileName: {type: String, required: true},
+    ContentType: {type: String, required: true},
+    Key: {type: String, required: true},
     userID: {type: String, required: true},
-    bucketName: {type: String, required:true},
+    Bucket: {type: String, required:true},
     dateAdded: {type: Date, required: true},
+    Location: {type: String, required:true},
     child: {type: String, required: false}
 });
 
