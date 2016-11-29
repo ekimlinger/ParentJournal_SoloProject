@@ -11,7 +11,7 @@ var Entry = new Schema({
     journal: {type: String, required: true},
     notes: {type: String, required: false},
     accomplishments: {type: Array, required: false},
-    images: {type: Object, required: false},
+    images: {type: Array, required: false},
     date: {type: String, required: true}
 });
 
