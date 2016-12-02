@@ -64,11 +64,14 @@ myApp.controller("AddController", ["$scope", "$filter", "$mdToast", "$mdDialog",
   // Sends entry form to factory
   $scope.submit = function(entry){
     JournalService.postEntries(entry);
+    //NEED TO VERIFY THAT JOURNAL ENTRY SAVED PROPERLY
     $scope.showToast(entry.date);
     $scope.entry = {};
     $scope.entry.phrases = [];
     $scope.entry.things = [];
     $scope.entry.accomplishments = [];
+    $scope.entry.images = [];
+    $scope.images = [];
   };
 
 
