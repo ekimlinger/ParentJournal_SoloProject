@@ -23,7 +23,7 @@ router.post("/entries", function(req, res, next) {
     accomplishments: req.body.accomplishments,
     date: req.body.date
   });
-
+  console.log("Saving entry: ", entry);
   entry.save(function(err, entry) {
     if (err) {
       console.log(err);

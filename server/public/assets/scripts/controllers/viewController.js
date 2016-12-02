@@ -9,7 +9,7 @@ myApp.controller("ViewController", ["$scope","$filter", "$mdToast", "$mdDialog",
     JournalService.getEntries(date);
 
     $scope.entries = JournalService.entries;
-
+    console.log($scope.entries);
   });
 
   //Change move to previous date
@@ -67,6 +67,7 @@ myApp.controller("ViewController", ["$scope","$filter", "$mdToast", "$mdDialog",
     currentEntry.things = entry.things;
     currentEntry.child = entry.child;
     currentEntry.date = $scope.date;
+    currentEntry.images = $scope.images;
 
     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
     $mdDialog.show({

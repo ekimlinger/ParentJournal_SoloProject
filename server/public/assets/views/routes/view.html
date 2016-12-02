@@ -53,6 +53,12 @@
                 <p>
                     <strong>Notes: &nbsp&nbsp&nbsp&nbsp</strong>{{entry.notes || "None"}}
                 </p>
+                <div>
+                  <p>
+                    <strong>Images:</strong>
+                  </p>
+                  <img class="entries" ng-repeat="image in entry.images" ng-src="{{image.Location}}">
+                </div>
             </md-card-content>
 
             <md-card-actions layout="row" layout-align="end center">

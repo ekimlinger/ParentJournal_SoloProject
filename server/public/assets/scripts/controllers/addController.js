@@ -47,6 +47,10 @@ myApp.controller("AddController", ["$scope", "$filter", "$mdToast", "$mdDialog",
     }
   });
 
+  $scope.$watch("images", function(images){
+    $scope.entry.images = images;
+    console.log("New image array: ", images);
+  });
 
   //Sets default date to today
   $scope.entry.date = new Date($filter("date")(Date.now()));
