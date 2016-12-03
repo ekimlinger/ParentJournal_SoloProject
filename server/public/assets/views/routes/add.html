@@ -69,7 +69,13 @@
         </div>
 
         <div class="md-block">
-          <img class="entries" ng-repeat="image in images" ng-src="{{image.Location}}">
+
+          <div class="image-container" ng-repeat="image in images">
+            <img class="entries" ng-src="{{image.Location}}">
+            <md-button class="md-icon-button image-delete-button" ng-click="deleteImage($index)">
+              <md-icon aria-label="Delete image" md-svg-icon="md-close"></md-icon>
+            </md-button>
+          </div>
         </div>
 
         <div layout-gt-xs="row" layout="column" layout-align="center center">
