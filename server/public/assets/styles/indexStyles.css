@@ -173,9 +173,28 @@ md-chips{
 }
 img.entries{
   display: inline-block;
-  height: 100px;
-  margin: 20px 20px 20px 0;
+  height: 150px;
   padding: 5px;
   border: lightgrey 4px dotted;
   border-radius: 10px;
+}
+.image-container{
+  margin: 20px 20px 20px 0;
+  height: 168px;
+  display:inline-block;
+  width:auto;
+  position:relative;
+}
+.image-delete-button{
+  top: 6px;
+  right: 0px;
+  position: absolute;
+  z-index: 300;
+  background: rgba(255,255,255,.8);
+}
+.image-delete-button.md-icon-button{
+  border-radius: 20%;
+  width:30px;
+  height: 30px;
+  padding:0;
 }
