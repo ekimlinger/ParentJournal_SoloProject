@@ -67,8 +67,8 @@ myApp.controller("ViewController", ["$scope","$filter", "$mdToast", "$mdDialog",
     currentEntry.things = entry.things;
     currentEntry.child = entry.child;
     currentEntry.date = $scope.date;
-    currentEntry.images = $scope.images;
-
+    currentEntry.images = entry.images;
+    console.log("Current entry: ", currentEntry);
     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
     $mdDialog.show({
         controller: DialogController,
@@ -105,9 +105,10 @@ myApp.controller("ViewController", ["$scope","$filter", "$mdToast", "$mdDialog",
     };
 
     $scope.saveEntry = function(entry) {
-        JournalService.editEntries(entry);
-        $mdDialog.hide(entry);
+      JournalService.editEntries(entry);
+      $mdDialog.hide(entry);
     };
+
   };
 
 }]);
