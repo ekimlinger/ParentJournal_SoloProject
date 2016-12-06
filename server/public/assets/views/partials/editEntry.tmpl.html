@@ -71,7 +71,7 @@
             <h3 class="md-label">General Notes</h3>
             <textarea ng-model="entry.notes" rows="3" md-maxlength="500" md-select-on-focus></textarea>
           </md-input-container>
-          <p>{{entry.images}}</p>
+
           <div>
             <div class="image-container" ng-repeat="image in entry.images">
               <img class="entries" ng-src="{{image.Location}}">

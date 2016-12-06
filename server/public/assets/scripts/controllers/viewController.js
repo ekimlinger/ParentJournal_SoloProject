@@ -108,7 +108,10 @@ myApp.controller("ViewController", ["$scope","$filter", "$mdToast", "$mdDialog",
       JournalService.editEntries(entry);
       $mdDialog.hide(entry);
     };
-
+    $scope.deleteImage = function(imageIndex, entry){
+      $scope.entry.images.splice(imageIndex,1);
+      console.log("New imagearray after splice: ", $scope.entry.images);
+    };
   };
 
 }]);
